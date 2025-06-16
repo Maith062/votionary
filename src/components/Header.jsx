@@ -2,7 +2,8 @@
 "use client"
 import Image from "next/image";
 import { Inter, Roboto, Poppins } from 'next/font/google';
-import { useState } from 'react' ; 
+import { useState, useEffect } from 'react' ; 
+import { Menu, X } from "lucide-react";   
 
 import Navbar from './Navbar'
 
@@ -21,32 +22,65 @@ const roboto = Roboto({
 export default function Header() {
 
   const [navOpen, setNavOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+    setIsMobile(mediaQuery.matches)
+
+    function handleQueryEvent(event){
+
+      setIsMobile(event.matches)
+      console.log('Inside the useEffect', isMobile)
+      setNavOpen(false)
+    }
+
+    mediaQuery.addEventListener('change', handleQueryEvent);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleQueryEvent);
+    }
+
+  }, []);
+
+  console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`)
 
   return (
     <header className={`bg-gradient-to-b from-black/20 to-transparent ${roboto.className} font-semibold items-center`}>
-      <div className="max-w-7xl mx-auto flex items-center justify-center">
+      <div className={isMobile ? "max-w-7xl mx-auto flex items-center justify-between pr-2 pl-2" : "max-w-7xl mx-auto flex items-center justify-center"}>
         {/* Logo Section */}
-        <div className="flex items-center">
+        <a href='\' className="flex items-center">
           <img
-            src="/images/icon2_cbg.png"
+            src={isMobile ? "/images/browser_icon1_cbg.png" : "/images/icon2_cbg.png"}
             alt="Logo"
-            className=" h-20 mr-4"
+            className="h-20 mr-4"
+
           />
-        </div>
+        </a>
 
         {/* Navigation Section */}
         
         <div className="relative md:justify-self-center">
-          <button className='menu-btn md:hidden' onClick={() => setNavOpen((prev) => !prev)}>
-            <span className="material-symbols-rounded">
-              {navOpen ? 'close' : 'menu'}
-            </span>
-          </button>
-          <Navbar navOpen={navOpen}/>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setNavOpen((prev) => !prev)}
+            className="md:hidden menu-btn "
+          >
+            {navOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>          
+          
+          {/* Pass both navOpen and isMobile props */}
+          <Navbar navOpen={navOpen} isMobile={isMobile} />
         </div>
 
         {/* Search Bar Section */}
-        <div className="relative mt-1 ml-10">
+
+        <div className="hidden md:block relative mt-1 ml-10">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             {/* <Search className="h-5 w-5 text-gray-400" /> */}
             <svg className="h-5 w-5 text-white hover:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

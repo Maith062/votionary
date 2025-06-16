@@ -29,11 +29,11 @@
 Utilities
 \******************/
 
-.material-symbols-rounded {
+/* .material-symbols-rounded {
     @apply w-[1em] h-[1em] overflow-hidden;
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
     "opsz" 24;
-}
+} */
 
 /******************\
 Components
@@ -44,11 +44,26 @@ Components
 */
 
 .nav-link{
-  @apply text-gray-700 hover:text-blue-600 transition-colors
+  @apply text-gray-800 hover:text-gray-300 transition-colors
 } 
+
+.nav-link.active{
+  @apply text-gray-300
+}
+
+.nav-link-mobile{
+    @apply block px-4 py-3 text-gray-700 hover:text-gray-400 hover:bg-gray-100 transition-colors text-sm font-medium relative
+}
+
 
 .navbar {
   @apply flex items-center space-x-8 mt-1
+}
+
+.navbar.active {
+  @apply absolute top-full left-0 right-0 mt-2 mx-2 p-3
+    bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200
+    flex flex-col space-y-1 space-x-0 z-50
 }
 
 /* .navbar{
@@ -67,13 +82,13 @@ Components
     @apply grid items-center h-9 px-4 text-sm font-medium 
     tracking-wide text-zinc-50/50 hover:text-zinc-50 
     transition-colors
-}
+}*/
 
 .menu-btn{
     @apply w-10 h-10 grid place-items-center bg-zinc-50/10 rounded-xl 
     ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl
-     hover:bg-zinc-50/15 transition-transform active:scale-95
-} */
+     hover:bg-zinc-50/15 transition-transform active:scale-95 md:hidden
+}
 
 .search-bar{
   @apply block w-40 h-8 pl-10 pr-3 py-2 border 
