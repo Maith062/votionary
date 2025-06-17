@@ -55,7 +55,7 @@ export default function Header() {
             <img
               src={isMobile ? "/images/browser_icon1_cbg.png" : "/images/icon2_cbg.png"}
               alt="Logo"
-              className="h-20 mt-2 mr-4"
+              className="h-20 mr-4"
             />
           </a>
 
@@ -94,7 +94,6 @@ export default function Header() {
         {/* Mobile Navigation Menu - Only shown when navOpen is true */}
         <div className={`md:hidden ${navOpen ? 'block' : 'hidden'}`}>
           <Navbar navOpen={navOpen} isMobile={isMobile} />
-          
           {/* Mobile Search Bar */}
           <div className="mt-4 pb-4">
             <div className="relative">
@@ -106,7 +105,7 @@ export default function Header() {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                className=" w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
               />
             </div>
           </div>

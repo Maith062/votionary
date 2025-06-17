@@ -35,7 +35,7 @@ Components
 }
 
 .nav-link-mobile.active {
-  @apply text-blue-600 bg-blue-50;
+  @apply text-blue-600 bg-blue-400/5;
 }
 
 .active-box {
