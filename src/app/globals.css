@@ -1,39 +1,8 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-/* body {
-  background: var(--background);
-  color: var(--foreground); 
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
 /******************\
 Utilities
 \******************/
-
-/* .material-symbols-rounded {
-    @apply w-[1em] h-[1em] overflow-hidden;
-    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0,
-    "opsz" 24;
-} */
 
 /******************\
 Components
@@ -43,56 +12,48 @@ Components
   Navbar
 */
 
-.nav-link{
-  @apply text-gray-800 hover:text-gray-300 transition-colors
-} 
-
-.nav-link.active{
-  @apply text-gray-300
-}
-
-.nav-link-mobile{
-    @apply block px-4 py-3 text-gray-700 hover:text-gray-400 hover:bg-gray-100 transition-colors text-sm font-medium relative
-}
-
-
-.navbar {
-  @apply flex items-center space-x-8 mt-1
-}
-
-.navbar.active {
-  @apply absolute top-full left-0 right-0 mt-2 mx-2 p-3
-    bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200
-    flex flex-col space-y-1 space-x-0 z-50
-}
-
-/* .navbar{
-   @apply absolute top-full mt-2 right-0 min-w-40 p-2
-    bg-zinc-50/10 rounded-2xl ring-inset ring-1  ring-zinc-50/5
-    scale-90 isolate blur-sm opacity-0 invisible transition-opacity 
-    md:static md:flex md:items-center md:mt-0 md:opacity-100 md:blur-0
-    md:visible md:scale-100 backdrop-blur-2xl
-}
-
-.navbar.active{
-    @apply opacity-100 scale-100 blur-0 visible 
+/* Desktop Navigation */
+.desktop-navbar {
+  @apply flex items-center space-x-8 mt-1;
 }
 
 .nav-link {
-    @apply grid items-center h-9 px-4 text-sm font-medium 
-    tracking-wide text-zinc-50/50 hover:text-zinc-50 
-    transition-colors
-}*/
+  @apply text-gray-600 hover:text-gray-300 transition-colors duration-200 font-medium;
+} 
 
-.menu-btn{
-    @apply w-10 h-10 grid place-items-center bg-zinc-50/10 rounded-xl 
-    ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl
-     hover:bg-zinc-50/15 transition-transform active:scale-95 md:hidden
+.nav-link.active {
+  @apply text-gray-300;
 }
 
-.search-bar{
+/* Mobile Navigation */
+.mobile-navbar {
+  @apply bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 mt-4 p-4 relative;
+}
+
+.nav-link-mobile {
+  @apply block px-4 py-3 text-gray-700 hover:text-gray-400 hover:bg-gray-100 transition-colors text-sm font-medium relative rounded-lg;
+}
+
+.nav-link-mobile.active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+.active-box {
+  @apply absolute bg-blue-100 rounded-lg -z-10 transition-all duration-300 ease-in-out;
+}
+
+/* Menu Button */
+.menu-btn {
+  @apply w-10 h-10 flex items-center justify-center bg-white/10 rounded-xl 
+    ring-1 ring-inset ring-white/20 backdrop-blur-sm
+    hover:bg-white/15 transition-all duration-200 active:scale-95 md:hidden;
+}
+
+/* Search Bar */
+.search-bar {
   @apply block w-40 h-8 pl-10 pr-3 py-2 border 
-            border-gray-300 rounded-full leading-5 bg-gray-400
-             placeholder-white focus:outline-none hover:bg-gray-100 
-             hover:placeholder-gray-400 text-sm font-medium
+    border-gray-300 rounded-full leading-5 bg-gray-400
+    placeholder-white focus:outline-none hover:bg-gray-100 
+    hover:placeholder-gray-400 text-sm font-medium
+    transition-colors duration-200;
 }

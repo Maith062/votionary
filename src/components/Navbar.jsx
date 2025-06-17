@@ -8,7 +8,7 @@ export default function Navbar({navOpen, isMobile}){
     const activeBox = useRef();
 
     const initActiveBox = () => {
-        if (isMobile  && lastActiveLink.current && activeBox.current) {
+        if (isMobile && lastActiveLink.current && activeBox.current) {
             activeBox.current.style.top = lastActiveLink.current.offsetTop + 'px';
             activeBox.current.style.left = lastActiveLink.current.offsetLeft + 'px';
             activeBox.current.style.width = lastActiveLink.current.offsetWidth + 'px';
@@ -45,54 +45,44 @@ export default function Navbar({navOpen, isMobile}){
         {
             name: "SIGN UP",
             link: "#signup",
-            className: "nav-link",
         },
         {
             name: "LOGIN",
             link: "#login",
-            className: "nav-link",
         },
         {
             name: "ILLUSTRATED",
             link: "#illustrated",
-            className: "nav-link",
         },
         {
             name: "ANIMATED",
             link: "#animated",
-            className: "nav-link",
         },
         {
             name: "LISTS",
             link: "#lists",
-            className: "nav-link",
         },
         {
             name: "COMMUNITY",
             link: "#community",
-            className: "nav-link",
         }
     ]; 
 
     return (
-
-        <nav className={`navbar${navOpen ? ' active': ''}`}>
-        {
-          navItems.map(({name, link, className, ref}, key) => (
-            <a 
-            href={link} 
-            key={key}
-            ref={ref}
-            className={className}
-            onClick={activeCurrentLink}
-            >
-              {name}
-            </a>
-          ))
-        }
-        {isMobile && <div className="active-box" ref={activeBox}></div>}
+        <nav className={isMobile ? 'mobile-navbar' : 'desktop-navbar'}>
+            {navItems.map(({name, link, ref}, key) => (
+                <a 
+                    href={link} 
+                    key={key}
+                    ref={ref}
+                    className={isMobile ? 'nav-link-mobile' : 'nav-link'}
+                    onClick={activeCurrentLink}
+                >
+                    {name}
+                </a>
+            ))}
+            {isMobile && <div className="active-box" ref={activeBox}></div>}
         </nav>
-
     )
 }
 
