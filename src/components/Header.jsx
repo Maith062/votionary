@@ -96,6 +96,7 @@ export default function Header() {
           <>
              <div 
                 className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+                onClick={() => setNavOpen(false)}
               />
 
               <div className={`md:hidden ${navOpen ? 'block' : 'hidden'} w-50 fixed right-2 top-15 z-50`}>
