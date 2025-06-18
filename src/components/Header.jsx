@@ -92,24 +92,34 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation Menu - Only shown when navOpen is true */}
-        <div className={`md:hidden ${navOpen ? 'block' : 'hidden'} w-50 fixed right-2 top-15 z-50`}>
-          <Navbar navOpen={navOpen} isMobile={isMobile} />
-          {/* Mobile Search Bar */}
-          <div className="mt-4 pb-4 ">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>  
-              </div>
-              <input
-                type="text"
-                placeholder="Search..."
-                className=" w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
+        {navOpen && (
+          <>
+             <div 
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
               />
-            </div>
-          </div>
-        </div>
+
+              <div className={`md:hidden ${navOpen ? 'block' : 'hidden'} w-50 fixed right-2 top-15 z-50`}>
+                <Navbar navOpen={navOpen} isMobile={isMobile} />
+                {/* Mobile Search Bar */}
+                <div className="mt-4 pb-4 ">
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>  
+                    </div>
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      className=" w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+
+          </>
+        )}
+        
       </div>
     </header>
   );
