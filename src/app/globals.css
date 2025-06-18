@@ -34,7 +34,7 @@ Components
 
 /* Mobile Navigation */
 .mobile-navbar {
-  @apply bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 mt-4 p-4 relative;
+  @apply bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-gray-200 mt-4 p-4;
 }
 
 .nav-link-mobile {
