@@ -1,5 +1,6 @@
 import {useRef, useEffect} from 'react'
 import PropTypes from "prop-types";
+import Link from 'next/link'
 
 
 export default function Navbar({navOpen, isMobile}){
@@ -44,34 +45,34 @@ export default function Navbar({navOpen, isMobile}){
     const navItems = [
         {
             name: "SIGN UP",
-            link: "#signup",
+            link: "/signup",
         },
         {
             name: "LOGIN",
-            link: "#login",
+            link: "/login",
         },
         {
             name: "ILLUSTRATED",
-            link: "#illustrated",
+            link: "/illustrated",
         },
         {
             name: "ANIMATED",
-            link: "#animated",
+            link: "/animated",
         },
         {
             name: "LISTS",
-            link: "#lists",
+            link: "/lists",
         },
         {
             name: "COMMUNITY",
-            link: "#community",
+            link: "/community",
         }
     ]; 
 
     return (
         <nav className={isMobile ? 'mobile-navbar' : 'desktop-navbar'}>
             {navItems.map(({name, link, ref}, key) => (
-                <a 
+                <Link 
                     href={link} 
                     key={key}
                     ref={ref}
@@ -79,7 +80,7 @@ export default function Navbar({navOpen, isMobile}){
                     onClick={activeCurrentLink}
                 >
                     {name}
-                </a>
+                </Link>
             ))}
             {isMobile && <div className="active-box" ref={activeBox}></div>}
         </nav>
