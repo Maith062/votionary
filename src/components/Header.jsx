@@ -55,7 +55,7 @@ export default function Header() {
             <img
               src={isMobile ? "/images/browser_icon1_cbg.png" : "/images/icon2_cbg.png"}
               alt="Logo"
-              className="h-20 mr-4"
+              className="h-20 mr-4 z-100"
             />
           </a>
 
@@ -99,7 +99,7 @@ export default function Header() {
                 onClick={() => setNavOpen(false)}
               />
 
-              <div className={`md:hidden ${navOpen ? 'block' : 'hidden'} w-50 fixed right-2 top-15 z-50`}>
+              <div className={`md:hidden ${navOpen ? 'block' : 'hidden'} w-50 absolute right-2 top-15 z-50`}>
                 <Navbar navOpen={navOpen} isMobile={isMobile} />
                 {/* Mobile Search Bar */}
                 <div className="mt-4 pb-4 ">
