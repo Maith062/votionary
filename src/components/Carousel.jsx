@@ -7,7 +7,7 @@ export default function Carousel({slides}){
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => clicked ? prev : (prev + 1) % slides.length)
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(timer);
     }, [clicked, slides.length]);
@@ -24,7 +24,7 @@ export default function Carousel({slides}){
         setCurrentSlide(index);
         //making it so that if someone clicks a dot, it will stop there for 8 seconds
         setIsClicked(true);
-        setTimeout(() => setIsClicked(false), 8000);
+        setTimeout(() => setIsClicked(false), 9000);
     };
 
     
@@ -33,7 +33,7 @@ export default function Carousel({slides}){
         <>
             {/* Carousel Section */}
             <div className="flex-1">
-                <div className="relative w-full h-80 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+                <div className="relative w-full h-80 lg:h-[450px] bg-gray-200 rounded-xl overflow-hidden shadow-lg">
                     {/* Slides Container */}
                     <div 
                         className="flex h-full transition-transform duration-500 ease-in-out"

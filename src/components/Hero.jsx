@@ -25,10 +25,14 @@ export default function Hero(){
     
     return(
         
-            <div className="max-w-7xl mx-2 flex gap-8">
-                <Carousel slides={slides}/>
-                <div>
-                    <h1>Will include a gridbox where the three things they can do are highlighted</h1>
+            <div className="max-w-7xl mx-2 flex flex-col lg:flex-row gap-10">
+                <div className="flex-[2] ">
+                    <Carousel slides={slides}/>
+                </div>
+                <div className="flex-1 bg-amber-200">
+                    <h1 className="flex justify-center ">
+                        Welcome to Votionary
+                    </h1>
                 </div>
 
             </div>

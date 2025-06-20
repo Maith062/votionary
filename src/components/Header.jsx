@@ -47,7 +47,7 @@ export default function Header() {
   console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`)
 
   return (
-    <header className={`bg-gradient-to-b from-black/20 to-transparent ${roboto.className} font-semibold items-center`}>
+    <header className={`bg-gradient-to-b from-black/20 to-transparent ${roboto.className} font-semibold items-center pt-1`}>
       <div className="max-w-7xl mx-auto px-2">
         <div className="flex items-center justify-between md:justify-center">
           {/* Logo Section */}
