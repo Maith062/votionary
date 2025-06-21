@@ -99,6 +99,12 @@ export default function Carousel({slides}){
                     <div className="absolute top-4 right-4 bg-black/10 text-white px-3 py-1 rounded-3xl text-sm">
                         {currentSlide + 1} / {slides.length}
                     </div>
+
+                    {/* Info text */}
+                    <div className="absolute bottom-4 right-4  bg-black/10 text-white px-3 py-1 rounded-sm text-xs">
+                        {slides[currentSlide].text}
+                    </div>
+
                 </div>
             </div>
         </>
