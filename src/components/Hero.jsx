@@ -1,5 +1,6 @@
 "use client"
 import Carousel from "./Carousel";
+import InfoCard from "./InfoCard";
 
 export default function Hero(){
 
@@ -22,17 +23,52 @@ export default function Hero(){
             alt: "Beautiful landscape 3"
         }
     ];
+
+    const introItems = [
+        {
+            imgValue: '/icons/explore.svg',
+            label: 'Explore',
+            info: 'Explore the most popular selection of manwha, manga, and anime!'
+        },
+         {
+            imgValue: '/icons/create.svg',
+            label: 'Create',
+            info: 'Curate lists based on personalized recommendations and share with your community!'
+        },
+        {
+            imgValue: '/icons/heart.svg',
+            label: 'Review',
+            info: 'Like, Comment, and Review content allowing a community based scale!'
+        },
+       
+    ];
+
     
     return(
         
-            <div className="max-w-7xl mx-2 flex flex-col lg:flex-row gap-10">
+            <div className="max-w-7xl flex flex-col lg:flex-row gap-10">
                 <div className="flex-[2] ">
                     <Carousel slides={slides}/>
                 </div>
-                <div className="flex-1 bg-amber-200">
-                    <h1 className="flex justify-center ">
-                        Welcome to Votionary
+
+                {/* Structuring the introductory info */}
+                <div className="container flex-1"> {/*Could've also done w-[25%]*/}
+                    <h1 className="headline-2">
+                        Welcome to Votionary!
                     </h1>
+                    <div className="pt-5 grid gap-4" style={{gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))'}}>
+                        {
+                            introItems.map(({imgValue, title, info}, key) =>
+                            (
+                                <InfoCard 
+                                    key={key}
+                                    imgValue={imgValue}
+                                    title={title}
+                                    info={info}
+                                />
+                            ))
+                        }
+                    </div>
                 </div>
 
             </div>

@@ -33,7 +33,7 @@ export default function Carousel({slides}){
         <>
             {/* Carousel Section */}
             <div className="flex-1">
-                <div className="relative w-full h-80 lg:h-[450px] bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+                <div className="relative w-full h-80 lg:h-[450px] bg-gray-200 rounded-sm overflow-hidden soft-edges">
                     {/* Slides Container */}
                     <div 
                         className="flex h-full transition-transform duration-500 ease-in-out"

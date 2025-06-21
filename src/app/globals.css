@@ -11,6 +11,29 @@ html {
 Utilities
 \******************/
 
+.container{
+  @apply pl-4 mx-auto lg:pl-6 lg:pr-2 xl:max-w-6xl
+}
+
+/******************\
+Typography
+\******************/
+.headline-1, .headline-2{
+    @apply max-w-max;
+    background: -webkit-linear-gradient(0deg, #37e0b1, #169073);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.headline-1 {
+    @apply text-5xl leading-tight font-semibold lg:text-[55px]
+    lg:leading-[1.15]
+}
+
+.headline-2{
+    @apply text-3xl lg:text-4xl lg:leading-tight font-semibold
+}
+
 /******************\
 Components
 \******************/
@@ -25,7 +48,7 @@ Components
 }
 
 .nav-link {
-  @apply text-gray-600 hover:text-gray-300 transition-colors duration-200 font-medium;
+  @apply text-emerald-400 hover:text-gray-300 transition-colors duration-200 font-semibold;
 } 
 
 .nav-link.active {
@@ -63,4 +86,12 @@ Components
     placeholder-white focus:outline-none hover:bg-gray-100 
     hover:placeholder-gray-400 text-sm font-medium
     transition-colors duration-200;
+}
+
+/***************\
+Accessories
+\***************/
+
+.soft-edges {
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1);
 }
