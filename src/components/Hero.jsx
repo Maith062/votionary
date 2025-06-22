@@ -105,7 +105,7 @@ export default function Hero(){
     
     return(
         <>
-            <div className="max-w-7xl flex flex-col">
+            <div className="max-w-7xl flex flex-col mt-1">
                 <div className="max-w-7xl flex flex-col lg:flex-row gap-10">
                     <div className="flex-[2] ">
                         <Carousel slides={slides}/>
@@ -134,7 +134,10 @@ export default function Hero(){
 
                 </div>
                 <div>
-                    <h1>Hello</h1>
+                    <h1 className="mt-20 flex justify-center">
+                        Hello
+                    </h1>
+                    <button></button>
                 </div>
             </div>
         </>
