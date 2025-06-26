@@ -3,7 +3,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* @apply bg-zinc-700; */
 }
+
 
 
 
@@ -25,6 +27,14 @@ Typography
     -webkit-text-fill-color: transparent;
 }
 
+.headline-2e{
+    background: -webkit-linear-gradient(0deg, #37e0b1, #169073);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
 .headline-1 {
     @apply text-5xl leading-tight font-semibold lg:text-[55px]
     lg:leading-[1.15]
@@ -32,6 +42,10 @@ Typography
 
 .headline-2{
     @apply text-3xl lg:text-4xl lg:leading-tight font-semibold
+}
+
+.headline-2e{
+    @apply text-2xl lg:text-4xl lg:leading-tight font-semibold
 }
 
 /******************\
@@ -100,4 +114,12 @@ Accessories
   mask: 
     linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
     /* linear-gradient(to bottom, transparent 0%, black 1%, black 99%, transparent 100%); */
+}
+
+/*Button*/
+
+.btn {
+    @apply max-w-max h-9 flex items-center gap-2 px-4 
+    rounded-xl font-medium text-sm ring-1 ring-zinc-50/5
+    ring-inset transition-[background-color]
 }

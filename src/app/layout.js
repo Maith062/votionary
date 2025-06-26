@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import Header from "@/components/Header"
+import Header from "@/sections/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,18 +16,19 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Votionary",
   description: "Join a community of anime and manga fans",
-  icons: "/images/browser_icon1_cbg.png"
+  icons: "/images/browser_icon1_cbg.png",
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
-    <html className="scrollbar-thin scrollbar-track-white-800 scrollbar-thumb-zinc-500" lang="en">
+    <html
+      className="scrollbar-thin scrollbar-track-white-800 scrollbar-thumb-zinc-500"
+      lang="en"
+    >
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200`}
       >
-        <Header/>
+        <Header />
         {children}
       </body>
     </html>

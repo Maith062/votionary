@@ -85,7 +85,7 @@ export default function Carousel({slides}){
                             <button
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`w-10 h-1 rounded-2xl transition-all duration-200 ${
+                                className={`w-10 h-1 rounded-2xl transition-all duration-200 cursor-pointer ${
                                     index === currentSlide 
                                         ? 'bg-white scale-110' 
                                         : 'bg-white bg-opacity-50 hover:bg-opacity-75'
