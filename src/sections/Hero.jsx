@@ -105,18 +105,18 @@ export default function Hero() {
   return (
     <>
       <div className="max-w-7xl flex flex-col">
-        <div className="max-w-7xl flex flex-col lg:flex-row gap-10 sm:px-20">
+        <div className="max-w-7xl flex flex-col lg:flex-row gap-10 mx-20">
           <div className="flex-[2] ">
             <Carousel slides={slides} />
           </div>
 
           {/* Structuring the introductory info */}
-          <div className="container flex-1">
+          <div className="container flex-1 mt-2">
             {" "}
             {/*Could've also done w-[25%]*/}
             <h1 className="headline-2">Welcome to Votionary!</h1>
             <div
-              className="pt-5 grid gap-4"
+              className="pt-5 grid gap-4 mb-0 pb-0"
               style={{
                 gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
               }}

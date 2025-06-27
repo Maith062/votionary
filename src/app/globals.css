@@ -14,7 +14,7 @@ Utilities
 \******************/
 
 .container{
-  @apply pl-4 mx-auto lg:pl-6 lg:pr-2 xl:max-w-6xl
+  @apply pl-2 mx-auto lg:pl-3 lg:pr-2 xl:max-w-6xl
 }
 
 /******************\

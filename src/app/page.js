@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Hero from "@/sections/Hero";
 import Popular from "@/sections/Popular"
+import JustReviewed from "@/sections/JustReviewed";
 
 export default function Home() {
 
@@ -11,20 +12,27 @@ export default function Home() {
         
         <Hero />
 
+        {/* Popular film section + Text blurb */}
         <div className=" w-full">
-          <div className="relative bg-gradient-to-b from-transparent via-zinc-700/50 to-zinc-700 p-15 ">
-            <Popular/>
-             <button className="flex items-center justify-center mx-auto mt-10 h-15 p-2 bg-zinc-600 hover:bg-emerald-700 shadow-md cursor-pointer rounded-sm">
+          <div className="relative bg-gradient-to-b from-transparent via-zinc-800/75 to-zinc-800 py-15 px-17 ">
+            <h1 className="text-center mt-1 text-zinc-800 font-mono">
+              The social network where every one finds their story.
+            </h1>
+            <h1 className="text-center mt-4 text-white font-mono">
+              Find your next adventure here!
+            </h1>
+             <button className="flex items-center justify-center mx-auto mt-8 mb-10 h-15 p-2 bg-blue-400 hover:bg-emerald-400 shadow-md cursor-pointer rounded-sm">
               <h3 className="font-medium lg:text-[20px] text-white">
                 Get started today
               </h3>
             </button>
-            <h1 className="text-center mt-8 text-white font-mono">
-              The social network for fans of the east
-            </h1>
+            <Popular/>
+
           </div>
 
-          <div className="bg-zinc-700 h-400">
+          {/* Review section */}
+          <div className="bg-zinc-800 h-400 px-20">
+            <JustReviewed/>
           </div>
 
         </div>

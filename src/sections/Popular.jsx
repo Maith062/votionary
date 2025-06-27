@@ -38,7 +38,7 @@ export default function Popular(){
         },
         {
         id: 5,
-        imageUrl: "https://picsum.photos/300/400?random=1",
+        imageUrl: "https://picsum.photos/300/400?random=5",
         title: "The Amazing Adventure",
         rating: 4.5,
         likes: 15420,
@@ -46,7 +46,7 @@ export default function Popular(){
         },
         {
         id: 6,
-        imageUrl: "https://picsum.photos/300/400?random=2", 
+        imageUrl: "https://picsum.photos/300/400?random=6", 
         title: "Mystery of the Lost Kingdom",
         rating: 3.8,
         likes: 8950,
@@ -54,18 +54,17 @@ export default function Popular(){
         },
         {
         id: 7,
-        imageUrl: "https://picsum.photos/300/400?random=3",
+        imageUrl: "https://picsum.photos/300/400?random=7",
         title: "Space Odyssey: Beyond the Stars",
         rating: 4.9,
         likes: 45600,
-        type:"anime"
         },
         {
         id: 8,
-        imageUrl: "https://picsum.photos/300/400?random=4",
+        imageUrl: "https://picsum.photos/300/400?random=8",
         title: "Comedy Night Live",
         rating: 4.2,
-        likes: 2340,
+        likes: 340,
         type:"manga"
         }
     ];
