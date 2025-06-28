@@ -16,7 +16,7 @@ export default function Hero() {
     {
       id: 2,
       image:
-        "https://picsum.photos/300/400?random=9",
+        "https://picsum.photos/700/400?random=9",
       alt: "Beautiful landscape 2",
       text: "Beautiful landscape 2",
     },

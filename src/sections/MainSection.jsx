@@ -172,9 +172,29 @@
                         </div>
                     ))}
                 </div>
-                <div className="mt-10 text-white font-medium text-[30px] text-center">
-                    <h1></h1>
+                <div className="mt-10 text-white font-extralight text-[30px] text-center">
+                    <h1 className="">Where stories spark conversations. Uncover hidden gems.</h1>
+                    <h1>Discover where content meets community.</h1>
+                    <h4 className="text-[15px] mt-5">Find some of the most popular reviews and lists this week. Join to create your own.</h4>
+                  
                 </div>
+                <div className="max-w-7xl flex flex-col lg:flex-row gap-20 mt-13">
+                    <div className="flex-[2]">
+                        <h1 className="text-white font-extralight pb-1">Popular Reviews this week</h1>
+                        <div className="flex items-center">
+                            <hr className="flex-grow border-t border-gray-300"/>
+                        </div>
+                        <h1>Hello</h1>
+                    </div>
+                     
+                    <div className="flex-1">
+                        <h1 className="text-white font-extralight pb-1">Popular Lists</h1>
+                        <div className="flex items-center">
+                            <hr className="flex-grow border-t border-gray-300"/>
+                        </div>
+                    </div>
+                </div>
+               
             </>
         )
     }
