@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Hero from "@/sections/Hero";
 import Popular from "@/sections/Popular"
-import JustReviewed from "@/sections/MainSection";
+import MainSection from "@/sections/MainSection";
 
 export default function Home() {
 
@@ -31,8 +31,8 @@ export default function Home() {
           </div>
 
           {/* Review section */}
-          <div className="bg-zinc-800 h-400 px-20">
-            <JustReviewed/>
+          <div className="bg-zinc-800 px-20">
+            <MainSection/>
           </div>
 
         </div>
