@@ -11,16 +11,16 @@ export default function Lists({
 
     function formatting(metric){
         if (metric >= 1000000){
-            return `${(metric/1000000).toFixed(1)}M`  // Fixed: was dividing by 100000
+            return `${(metric/1000000).toFixed(1)}M` 
         }else if (metric >= 1000){
             return `${(metric/1000).toFixed(1)}K`
         }
-        return metric  // Added: return original number if less than 1000
+        return metric  //return original number if less than 1000
     }
 
     // Limit to 5 images and arrange with left on top of right
     const displayImages = listArray.slice(0, 5);
-    console.log(displayImages)
+    // console.log(displayImages)
 
     return(
         <div className="bg-zinc-800 rounded-xs shadow-md mt-3">

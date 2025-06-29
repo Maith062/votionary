@@ -327,6 +327,64 @@
             },
         ];
 
+        //once again, a temporary measure until the backend is set up
+        const popularReviewers = [
+            {
+                userIcon: "https://picsum.photos/64/64?random=108",
+                userName: "Jeff Goldblum",
+                numberOfFilms: 2133,
+                numberOfReviews: 1231
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=109",
+                userName: "Maya Chen",
+                numberOfFilms: 1847,
+                numberOfReviews: 923
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=110",
+                userName: "Diego Martinez",
+                numberOfFilms: 1592,
+                numberOfReviews: 1456
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=111",
+                userName: "Zara Okafor",
+                numberOfFilms: 2891,
+                numberOfReviews: 2034
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=112",
+                userName: "Kai Thompson",
+                numberOfFilms: 1234,
+                numberOfReviews: 887
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=113",
+                userName: "Priya Patel",
+                numberOfFilms: 3421,
+                numberOfReviews: 1789
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=114",
+                userName: "Zara Okafor",
+                numberOfFilms: 2891,
+                numberOfReviews: 2034
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=115",
+                userName: "Kai Thompson",
+                numberOfFilms: 1234,
+                numberOfReviews: 887
+            },
+            {
+                userIcon: "https://picsum.photos/64/64?random=116",
+                userName: "Priya Patel",
+                numberOfFilms: 3421,
+                numberOfReviews: 1789
+            }
+        ];
+
         const handleReviewClick = (review) => (
             console.log("This is a review ", review.title)
         )
@@ -401,22 +459,52 @@
                     </div>
                      
                     <div className="flex-1">
-                        <h1 className="text-white font-extralight pb-1">Popular Lists</h1>
-                        <div className="flex items-center">
-                            <hr className="flex-grow border-t border-gray-300/50"/>
+                        <div>
+                            <h1 className="text-white font-extralight pb-1">Popular Lists</h1>
+                            <div className="flex items-center">
+                                <hr className="flex-grow border-t border-gray-300/50"/>
+                            </div>
+                            <div className="mt-5">
+                                {popularLists.map((item, index) => (
+                                    <Lists
+                                        key={index}
+                                        listArray={item.listArray}
+                                        listTitle={item.listTitle} 
+                                        userIcon={item.userIcon}
+                                        userName={item.userName} 
+                                        likes={item.likes} 
+                                        comments={item.comments}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                        <div className="mt-5">
-                            {popularLists.map((item, index) => (
-                                <Lists
-                                    key={index}
-                                    listArray={item.listArray}
-                                    listTitle={item.listTitle} 
-                                    userIcon={item.userIcon}
-                                    userName={item.userName} 
-                                    likes={item.likes} 
-                                    comments={item.comments}
-                                />
-                            ))}
+                        <div className="mt-13">
+                            <h1 className="text-white font-extralight pb-1">Popular Reviewers</h1>
+                            <div className="flex items-center">
+                                <hr className="flex-grow border-t border-gray-300/50"/>
+                            </div>
+                            <div>
+                                {popularReviewers.map((person, index) => (
+                                    <div key={index} className="mt-6 text-zinc-300">
+                                        <div className="flex items-center">
+                                            
+                                            <img 
+                                                src={person.userIcon}
+                                                className="w-10 h-10 rounded-full border-2 border-gray-300"
+                                            />
+                                            <div className="flex flex-col">
+                                                <p className="pl-3">{person.userName}</p>
+                                                <div className="pl-3 flex gap-4 text-xs">
+                                                    <p>{`${person.numberOfReviews.toLocaleString()} reviews`}</p>
+                                                    <p>{`${person.numberOfFilms.toLocaleString()} films`}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                   
+
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
