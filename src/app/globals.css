@@ -6,6 +6,10 @@ html {
   /* @apply bg-zinc-700; */
 }
 
+body{
+    overscroll-behavior-y: none;
+}
+
 
 
 

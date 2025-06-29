@@ -76,7 +76,7 @@ export default function Popular(){
     return(
         <>
             <div  
-                className="pt-5 grid gap-3 mx-3"
+                className="pt-5 grid gap-3 mx-3 place-items-center"
                 style={{
                     gridTemplateColumns: "repeat(auto-fill, minmax(125px, 1fr))",
                 }}

@@ -1,10 +1,24 @@
     "use client"
 
+    import { useEffect, useState } from 'react'
+
     import ContentBox from "@/components/ContentBox"
     import CompactReview from "@/components/Compact_Review"
     import Lists from "@/components/Lists";
 
     export default function MainSection(){
+
+        const [windowWidth, setWindowWidth] = useState("0px")
+
+        // console.log(window.innerWidth);
+
+        useEffect(() => {
+            setWindowWidth(window.innerWidth);
+            const handleResize = () => setWindowWidth(window.innerWidth)
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+
+        }, [])
 
         // In the future, it will be pulled in from a DB
         const reviews = [
@@ -274,7 +288,8 @@
                 listTitle: "Random Title",
                 userIcon: "https://picsum.photos/64/64?random=108",
                 likes: 12122,
-                comments: 11
+                comments: 11,
+                userName: "DonUsernameo"
             },
             {
                 listArray: [
@@ -289,7 +304,8 @@
                 listTitle: "Random Title",
                 userIcon: "https://picsum.photos/64/64?random=108",
                 likes: 12122,
-                comments: 11
+                comments: 11,
+                userName: "Lucyers"
 
             },
             {
@@ -305,7 +321,8 @@
                 listTitle: "Random Title",
                 userIcon: "https://picsum.photos/64/64?random=108",
                 likes: 12122,
-                comments: 11
+                comments: 11,
+                userName: "Maya Chen"
 
             },
             {
@@ -390,7 +407,7 @@
         )
 
         return(
-            <>
+            <div className="pb-5">
                 <h1 className="text-white font-extralight pb-1">Recently reviewed</h1>
                 <div className="flex items-center">
                     <hr className="flex-grow border-t border-gray-300"/>
@@ -464,7 +481,14 @@
                             <div className="flex items-center">
                                 <hr className="flex-grow border-t border-gray-300/50"/>
                             </div>
-                            <div className="mt-5">
+                            <div 
+                                className="pt-5 grid gap-2 place-items-center"
+                                style={{
+                                    gridTemplateColumns: windowWidth <= 630 ?
+                                        "repeat(auto-fill, minmax(300px, 1fr))" : 
+                                        "repeat(auto-fill, minmax(350px, 1fr))",
+                                }}
+                            >
                                 {popularLists.map((item, index) => (
                                     <Lists
                                         key={index}
@@ -509,6 +533,6 @@
                     </div>
                 </div>
                
-            </>
+            </div>
         )
     }

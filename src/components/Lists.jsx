@@ -23,10 +23,10 @@ export default function Lists({
     // console.log(displayImages)
 
     return(
-        <div className="bg-zinc-800 rounded-xs shadow-md mt-3">
+        <div className="bg-zinc-800 rounded-xs shadow-md mt-3 max-w-[350px] lg:max-w-[400px]">
             {/* Images Grid - Left images on top of right */}
-            <div className="relative flex flex-col ">
-                <div className="bg-zinc-800 flex justify-center items-center">
+            <div className="relative flex flex-col" >
+                <div className="bg-zinc-800 flex justify-center items-center hover:ring-2 hover:ring-green-500">
                     <div className="flex -space-x-2">
                         {displayImages.map((image, index) => (
                             <div 
@@ -36,7 +36,7 @@ export default function Lists({
                             >
                                 <img
                                         src={image}
-                                        className="w-25 h-30 rounded-lg shadow-2xl"
+                                        className="w-25 h-30 rounded-xs shadow-2xl"
                                 />
                             </div>
                         ))}
@@ -45,7 +45,7 @@ export default function Lists({
                 
                 {/* Show "+X more" if there are more than 5 items */}
                 {listArray.length > 5 && (
-                    <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1">
+                    <div className="absolute bottom-1 right-1 bg-black/70 text-white text-xs px-2 py-1 z-8">
                         +{listArray.length - 5} more
                     </div>
                 )}
