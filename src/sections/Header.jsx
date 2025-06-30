@@ -58,7 +58,7 @@ export default function Header() {
                   : "/images/icon2_cbg.png"
               }
               alt="Logo"
-              className="h-20 mr-4 z-100"
+              className="h-20 mr-4 z-40"
             />
           </a>
 

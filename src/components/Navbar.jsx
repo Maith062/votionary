@@ -162,65 +162,66 @@ export default function Navbar({navOpen, isMobile}){
             {/* All the login shennagins */}
             {isModalOpen && (
                 <div 
-                className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-                onClick={closeModal}
+                    className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                    onClick={closeModal}
                 >
                 <div 
-                    className="bg-white rounded-2xl p-8 w-full max-w-md relative transform transition-all duration-300 scale-100"
+                    className="bg-zinc-800 rounded-2xl p-4 w-[350px] max-w-md relative transform transition-all duration-300 scale-80"
                     onClick={(e) => e.stopPropagation()}
                 >
                     {/* Close Button */}
-                    <button
+                    {/* <button
                     onClick={closeModal}
                     className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
                     >
                     <X size={24} />
-                    </button>
+                    </button> */}
 
                     {/* Form Container */}
                     <div className="text-center">
                     {/* Form Tabs */}
                     <div className="flex bg-gray-100 rounded-xl p-1 mb-8">
                         <button
-                        onClick={() => setActiveTab('login')}
-                        className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
-                            activeTab === 'login'
-                            ? 'bg-white text-purple-600 shadow-sm'
-                            : 'text-gray-600 hover:text-gray-900'
-                        }`}
+                            onClick={() => setActiveTab('signup')}
+                            className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
+                                activeTab === 'signup'
+                                ? 'bg-white text-purple-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-900'
+                            }`}
                         >
-                        Login
+                            Sign Up
                         </button>
                         <button
-                        onClick={() => setActiveTab('signup')}
-                        className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
-                            activeTab === 'signup'
-                            ? 'bg-white text-purple-600 shadow-sm'
-                            : 'text-gray-600 hover:text-gray-900'
-                        }`}
+                            onClick={() => setActiveTab('login')}
+                            className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all ${
+                                activeTab === 'login'
+                                ? 'bg-white text-purple-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-900'
+                            }`}
                         >
-                        Sign Up
+                            Login
                         </button>
+                        
                     </div>
 
                     {/* Form Title */}
-                    <h2 className="text-2xl font-bold text-gray-900 mb-8">
+                    <h2 className="text-2xl font-bold text-gray-300 mb-4">
                         {activeTab === 'login' ? 'Welcome Back' : 'Create Account'}
                     </h2>
 
                     {/* Form */}
-                    <div className="space-y-6">
+                    <div className="space-y-3">
                         {activeTab === 'signup' && (
                         <div className="relative">
                             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
                             <input
-                            type="text"
-                            name="name"
-                            placeholder="Full Name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                            required
+                                type="text"
+                                name="name"
+                                placeholder="Full Name"
+                                value={formData.name}
+                                onChange={handleInputChange}
+                                className="w-full pl-12 pr-4 py-4 text-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                required
                             />
                         </div>
                         )}
@@ -233,7 +234,7 @@ export default function Navbar({navOpen, isMobile}){
                             placeholder="Email Address"
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            className="w-full pl-12 pr-4 py-4 text-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                             required
                         />
                         </div>
@@ -246,7 +247,7 @@ export default function Navbar({navOpen, isMobile}){
                             placeholder="Password"
                             value={formData.password}
                             onChange={handleInputChange}
-                            className="w-full pl-12 pr-12 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            className="w-full pl-12 pr-12 py-4 text-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                             required
                         />
                         <button
@@ -267,7 +268,7 @@ export default function Navbar({navOpen, isMobile}){
                             placeholder="Confirm Password"
                             value={formData.confirmPassword}
                             onChange={handleInputChange}
-                            className="w-full pl-12 pr-4 py-4 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                            className="w-full pl-12 pr-4 py-4 border text-white border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                             required
                             />
                         </div>
@@ -296,7 +297,7 @@ export default function Navbar({navOpen, isMobile}){
                             <div className="w-full border-t border-gray-200"></div>
                         </div>
                         <div className="relative flex justify-center text-sm">
-                            <span className="px-4 bg-white text-gray-500">Or continue with</span>
+                            <span className="px-4 bg-zinc-800 text-gray-500">Or continue with</span>
                         </div>
                         </div>
 
@@ -308,14 +309,14 @@ export default function Navbar({navOpen, isMobile}){
                             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                             </svg>
-                            <span className="ml-2 text-sm font-medium text-gray-700">Google</span>
+                            <span className="ml-2 text-sm font-medium text-gray-400">Google</span>
                         </button>
 
                         <button className="flex items-center justify-center px-4 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
                             <svg className="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
-                            <span className="ml-2 text-sm font-medium text-gray-700">Facebook</span>
+                            <span className="ml-2 text-sm font-medium text-gray-400">Facebook</span>
                         </button>
                         </div>
                     </div>
