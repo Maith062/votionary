@@ -68,7 +68,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Search Bar */}
-          <div className="hidden md:block relative mt-1 ml-10">
+          <div className="hidden lg:block relative mt-1 ml-10">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg
                 className="h-5 w-5 text-white hover:text-gray-500"
