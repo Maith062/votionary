@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
 import Navbar from "../components/Navbar";
+import UserIcon from "@/components/UserIcon";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,6 +43,10 @@ export default function Header() {
   }, []);
 
   console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`);
+
+  const user = {
+    image: 'https://picsum.photos/64/64?random=116'
+  }
 
   return (
     <header
@@ -87,17 +92,26 @@ export default function Header() {
             <input type="text" placeholder="Search..." className="search-bar" />
           </div>
 
+          <div className="hidden md:block ml-10">
+            <UserIcon user={user}/>
+          </div>
+
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setNavOpen((prev) => !prev)}
-            className="md:hidden menu-btn"
-          >
-            {navOpen ? (
-              <X className="h-6 w-6 text-gray-600" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-600" />
-            )}
-          </button>
+          <div className="md:hidden flex">
+            <button
+              onClick={() => setNavOpen((prev) => !prev)}
+              className=" menu-btn"
+            >
+              {navOpen ? (
+                <X className="h-6 w-6 text-gray-600" />
+              ) : (
+                <Menu className="h-6 w-6 text-gray-600" />
+              )}
+            </button>
+            <div className="md:block ml-10">
+              <UserIcon user={user}/>
+            </div>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu - Only shown when navOpen is true */}
