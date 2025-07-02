@@ -4,13 +4,14 @@ import { useState } from 'react'
 import { X, User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 
-export default function LoginModal({loginOrModal, modalOpen="false", onClose}){
+export default function LoginModal({loginOrModal, modalOpen="false", onClose, loginState}){
 
     //for the Login/Signup popup
     const [activeTab, setActiveTab] = useState(loginOrModal);
     const [showPassword, setShowPassword] = useState(false);
     const [passwords, setPasswords] = useState({ password: '', confirmPassword: '' });
     const [passwordError, setPasswordError] = useState('');
+    const [isCorrectPassword, setIsCorrectPassword] = useState(false);
     // const [formData, setFormData] = useState({
     //     name: '',
     //     email: '',
@@ -70,6 +71,11 @@ export default function LoginModal({loginOrModal, modalOpen="false", onClose}){
       // } catch (error) {
       //   console.error('Authentication error:', error);
       // }
+
+      //part of that is sending a signal up to the Header component to show, or not show
+      if (data.email === 'admin@admin' && data.password === 'admin1'){
+        loginState(true)
+      }
       
       closeModal();
       e.target.reset();
@@ -83,6 +89,12 @@ export default function LoginModal({loginOrModal, modalOpen="false", onClose}){
       //Calling the parent's close handler
       onClose();
     };
+
+    //temporary account for login: 
+    const tempAccount = {
+        userEmail: "admin@admin",
+        password: "admin1"
+    }
 
     return(
         <>

@@ -23,6 +23,7 @@ const roboto = Roboto({
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [successLogin, setSuccessLogin] = useState(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -43,6 +44,9 @@ export default function Header() {
   }, []);
 
   console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`);
+
+  const login = (state) => {setSuccessLogin(state)}
+  // const logout = () => {setSuccessLogin(false)}
 
   const user = {
     image: 'https://picsum.photos/64/64?random=116'
@@ -69,7 +73,7 @@ export default function Header() {
 
           {/* Desktop Navigation - Hidden on mobile */}
           <div className="hidden md:flex items-center">
-            <Navbar navOpen={false} isMobile={false} />
+            <Navbar navOpen={false} isMobile={false} loginState={login} />
           </div>
 
           {/* Desktop Search Bar */}
@@ -92,9 +96,9 @@ export default function Header() {
             <input type="text" placeholder="Search..." className="search-bar" />
           </div>
 
-          <div className="hidden md:block ml-10">
-            <UserIcon user={user}/>
-          </div>
+          {successLogin && <div className="hidden md:block ml-10">
+            <UserIcon user={user} loginState={login}/>
+          </div>}
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex">
@@ -108,9 +112,9 @@ export default function Header() {
                 <Menu className="h-6 w-6 text-gray-600" />
               )}
             </button>
-            <div className="md:block ml-10">
-              <UserIcon user={user}/>
-            </div>
+            {successLogin  && <div className="md:block ml-10">
+              <UserIcon user={user} loginState={login}/>
+            </div>}
           </div>
         </div>
 
@@ -127,7 +131,7 @@ export default function Header() {
                 navOpen ? "block" : "hidden"
               } w-50 absolute right-2 top-15 z-50`}
             >
-              <Navbar navOpen={navOpen} isMobile={isMobile} />
+              <Navbar navOpen={navOpen} isMobile={isMobile} loginState={login}/>
               {/* Mobile Search Bar */}
               <div className="mt-4 pb-4 ">
                 <div className="relative">

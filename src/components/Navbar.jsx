@@ -5,7 +5,7 @@ import Link from 'next/link'
 import LoginModal from './LoginModal';
 
 
-export default function Navbar({navOpen, isMobile}){
+export default function Navbar({navOpen, isMobile, loginState}){
 
     const lastActiveLink = useRef();
     const activeBox = useRef();
@@ -139,6 +139,7 @@ export default function Navbar({navOpen, isMobile}){
                     loginOrModal={activeTab} 
                     modalOpen={isModalOpen} 
                     onClose={handleModalClose}
+                    loginState={loginState}
                 />
             )}
 

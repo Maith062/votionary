@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { User, Settings, LogOut, ChevronDown } from 'lucide-react'
 
 //the destructured props, "user" is used
-export default function UserIcon({user}){
+export default function UserIcon({user, loginState}){
 
     const [isHovered, setIsHovered] = useState(false)
 
@@ -65,7 +65,10 @@ export default function UserIcon({user}){
                         
                         <div className="border-t border-gray-100 my-1"></div>
                         
-                        <button className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors duration-150">
+                        <button 
+                            className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors duration-150"
+                            onClick={() => loginState(false)}
+                        >
                             <LogOut className="w-4 h-4 mr-3 text-red-500" />
                             Log out
                         </button>
