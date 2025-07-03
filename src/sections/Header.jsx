@@ -20,7 +20,7 @@ const roboto = Roboto({
 });
 
 // console.log(browserImage)
-export default function Header() {
+export default function Header({lightMode}) {
   const [navOpen, setNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [successLogin, setSuccessLogin] = useState(false);
@@ -46,7 +46,6 @@ export default function Header() {
   console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`);
 
   const login = (state) => {setSuccessLogin(state)}
-  // const logout = () => {setSuccessLogin(false)}
 
   const user = {
     image: 'https://picsum.photos/64/64?random=116'
@@ -54,7 +53,7 @@ export default function Header() {
 
   return (
     <header
-      className={`bg-gradient-to-b from-black/20 to-transparent ${roboto.className} font-semibold items-center pt-1`}
+      className={lightMode ? `bg-gradient-to-b from-black/30 to-transparent ${roboto.className} font-semibold items-center pt-1` : `bg-zinc-800 ${roboto.className} font-semibold items-center pt-1`}
     >
       <div className="max-w-7xl mx-auto px-2">
         <div className="flex items-center justify-between md:justify-center">
@@ -93,7 +92,7 @@ export default function Header() {
                 />
               </svg>
             </div>
-            <input type="text" placeholder="Search..." className="search-bar" />
+            <input type="text" placeholder="Search..." className={lightMode ? "search-bar-light" : "search-bar-dark"} />
           </div>
 
           {successLogin && <div className="hidden md:block ml-10">

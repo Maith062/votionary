@@ -98,9 +98,17 @@ Components
 }
 
 /* Search Bar */
-.search-bar {
+.search-bar-light {
   @apply block w-40 h-8 pl-10 pr-3 py-2 border 
     border-gray-300 rounded-full leading-5 bg-gray-400
+    placeholder-white focus:outline-none hover:bg-gray-100 
+    hover:placeholder-gray-400 text-sm font-medium
+    transition-colors duration-200;
+}
+
+.search-bar-dark{
+  @apply block w-40 h-8 pl-10 pr-3 py-2 border 
+    border-gray-800 rounded-full leading-5 bg-gray-400
     placeholder-white focus:outline-none hover:bg-gray-100 
     hover:placeholder-gray-400 text-sm font-medium
     transition-colors duration-200;

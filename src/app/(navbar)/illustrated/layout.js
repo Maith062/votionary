@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 
 import Header from "@/sections/Header";
 import Footer from "@/sections/Footer"
@@ -20,7 +19,7 @@ export const metadata = {
   icons: "/images/browser_icon1_cbg.png",
 };
 
-export default function RootLayout({ children }) {
+export default function IllustratedLayout({ children }) {
   return (
     <html
       className="scrollbar-thin scrollbar-track-white-800 scrollbar-thumb-zinc-500"
@@ -29,8 +28,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200`}
       >
+        <Header lightMode={false}/> {/*Will be a changed to be darker*/}
         {children}
-        <Footer />
       </body>
     </html>
   );
