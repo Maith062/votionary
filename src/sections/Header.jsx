@@ -53,7 +53,7 @@ export default function Header({lightMode}) {
 
   return (
     <header
-      className={lightMode ? `bg-gradient-to-b from-black/30 to-transparent ${roboto.className} font-semibold items-center pt-1` : `bg-zinc-800 ${roboto.className} font-semibold items-center pt-1`}
+      className={lightMode ? `bg-gradient-to-b from-black/30 to-transparent ${roboto.className} font-semibold items-center pt-1` : `bg-zinc-900 ${roboto.className} font-semibold items-center pt-1`}
     >
       <div className="max-w-7xl mx-auto px-2">
         <div className="flex items-center justify-between md:justify-center">
@@ -61,9 +61,9 @@ export default function Header({lightMode}) {
           <a href="\" className="flex items-center">
             <img
               src={
-                isMobile
-                  ? "/images/browser_icon1_cbg.png"
-                  : "/images/icon2_cbg.png"
+                // isMobile
+                  // "/images/browser_icon1_cbg.png"
+                  "/images/icon2_cbg.png"
               }
               alt="Logo"
               className="h-20 mr-4 z-40"

@@ -19,7 +19,7 @@ export const metadata = {
   icons: "/images/browser_icon1_cbg.png",
 };
 
-export default function IllustratedLayout({ children }) {
+export default function AnimatedLayour({ children }) {
   return (
     
       <div
