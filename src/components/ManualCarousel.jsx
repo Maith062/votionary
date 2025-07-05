@@ -5,7 +5,8 @@ export default function ManualCarousel({slides}){
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [forceRender, setForceRender] = useState(0);
-    const posterPerRow = 4
+    const [posterPerRow, setPosterPerRow] = useState(4);
+    const [isMobile, setIsMobile] = useState(false);
 
     const sectionArray = (array, sectionSize) => {
         const sections = []
@@ -17,6 +18,23 @@ export default function ManualCarousel({slides}){
 
     const sectionChunks = sectionArray(slides, posterPerRow);
     const totalSections = sectionChunks.length;
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(max-width: 767px)");
+
+        setIsMobile(mediaQuery.matches);
+        setPosterPerRow(mediaQuery.matches ? 2: 4)
+
+        function handleQueryEvent(event) {
+           setPosterPerRow(event.matches ? 2: 4)
+        }
+
+        mediaQuery.addEventListener("change", handleQueryEvent);
+
+        return () => {
+        mediaQuery.removeEventListener("change", handleQueryEvent);
+        };
+    }, []);
 
     // Force re-render when currentSlide changes + pre-render all sections
     useEffect(() => {
@@ -49,12 +67,12 @@ export default function ManualCarousel({slides}){
     return(
         <>
             <div className="flex justify-center">
-                <div className="relative h-40 lg:h-[450px] md:w-full max-w-6xl rounded-sm overflow-hidden">
+                <div className="relative h-86 md:max-w-6xl rounded-sm overflow-hidden">
                     {/* Previous button */}
                     {canGoPrev && (
                         <button
                             onClick={prevSection}
-                            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 bg-opacity-20 backdrop-blur-sm text-gray-600 p-3 rounded-full hover:bg-opacity-30 hover:bg-white transition-all duration-200 shadow-lg z-10"
+                            className="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white/10 bg-opacity-20 backdrop-blur-sm text-gray-600 p-3 rounded-full hover:bg-opacity-30 hover:bg-white transition-all duration-200 shadow-lg z-10"
                             aria-label="Previous slide"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +84,7 @@ export default function ManualCarousel({slides}){
                     {/* Carousel container */}
                     <div className="flex justify-center h-full overflow-hidden" key={`carousel-${forceRender}`}>
                         <div 
-                            className="flex transition-transform duration-500 ease-in-out"
+                            className="flex transition-transform duration-800 ease-in-out"
                             style={{ 
                                 transform: `translateX(-${currentSlide * 100}%)`,
                             }}
@@ -74,11 +92,11 @@ export default function ManualCarousel({slides}){
                             {sectionChunks.map((chunk, sectionIndex) => (
                                 <div 
                                     key={`section-${sectionIndex}-${forceRender}`}
-                                    className="flex flex-row gap-4 justify-center items-center min-w-full"
+                                    className="flex flex-row gap-3 justify-center items-center min-w-full"
                                 >
                                     {chunk.map((poster, posterIndex) => (
                                         <ContentBox 
-                                            key={`${sectionIndex}-${posterIndex}-${forceRender}`}
+                                            key={`${sectionIndex}-${posterIndex}`}
                                             id={poster.id}
                                             imageUrl={poster.imageUrl}
                                             title={poster.title}
@@ -97,7 +115,7 @@ export default function ManualCarousel({slides}){
                     {canGoNext && (
                         <button
                             onClick={nextSection}
-                            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 bg-opacity-20 backdrop-blur-sm text-gray-600 p-3 rounded-full hover:bg-opacity-40 hover:bg-white transition-all duration-200 shadow-lg z-10"
+                            className="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white/10 bg-opacity-20 backdrop-blur-sm text-gray-600 p-3 rounded-full hover:bg-opacity-40 hover:bg-white transition-all duration-200 shadow-lg z-10"
                             aria-label="Next slide"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

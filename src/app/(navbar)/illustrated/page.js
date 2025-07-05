@@ -1,5 +1,7 @@
 "use client"
 
+import { Geist, Geist_Mono } from "next/font/google";
+
 import PosterCarousel from "@/components/PosterCarousel";
 import Collections from "@/sections/Collection";
 import ManualCarousel from "@/components/ManualCarousel";
@@ -158,6 +160,12 @@ function Illustrated(){
             <PosterCarousel posters={posters}/>
             <div className="mt-15 mx-20">
                 <Collections/>
+            </div>
+            <div className="ml-30">
+                <h1 className="text-white font-extralight pb-1">Recently reviewed</h1>
+                <div className="flex items-center mr-30">
+                    <hr className="flex-grow border-t border-gray-300"/>
+                </div>
             </div>
             <ManualCarousel slides={posters}/>
 
