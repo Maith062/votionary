@@ -49,7 +49,7 @@ Typography
 }
 
 .headline-2e{
-    @apply text-2xl lg:text-4xl lg:leading-tight
+    @apply text-3xl lg:text-4xl lg:leading-tight
 }
 
 /******************\

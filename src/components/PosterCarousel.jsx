@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 export default function PosterCarousel({posters}){
    // Main CardCarousel component
     const [isPaused, setIsPaused] = useState(false);
-    // const [selectedCard, setSelectedCard] = useState(null);
+    const [selectedCard, setSelectedCard] = useState(null);
     const [animationOffset, setAnimationOffset] = useState(0);
      const [direction, setDirection] = useState(1);
 
@@ -76,11 +76,13 @@ export default function PosterCarousel({posters}){
             {triplePosters.map((card, index) => (
                 <div key={`${card.id}-${index}`} className="mx-2">
                     <ContentBox
+                        id={card.id}
                         imageUrl={card.imageUrl}
                         title={card.title}
                         // isSelected={selectedCard?.id === card.id}
                         onClick={() => handleCardSelect(card)}
-                        isReview={true}
+                        isReview={false}
+                        type={card.type}
                     />
                 </div>
             ))}

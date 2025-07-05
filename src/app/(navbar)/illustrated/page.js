@@ -1,6 +1,7 @@
 "use client"
 
 import PosterCarousel from "@/components/PosterCarousel";
+import Collections from "@/sections/Collection";
 
 function Illustrated(){
 
@@ -11,7 +12,8 @@ function Illustrated(){
         title: "1 Amazing Adventure",
         rating: 4.5,
         likes: 15420,
-        type: "Manwha"
+        type:"illustrated",
+        subtype: "manwha"  
         },
         {
         id: 2,
@@ -19,7 +21,8 @@ function Illustrated(){
         title: "2 of the Lost Kingdom",
         rating: 3.8,
         likes: 8950,
-        type: "manwha"
+        type:"illustrated",
+        subtype: "manwha"  
         },
         {
         id: 3,
@@ -27,7 +30,8 @@ function Illustrated(){
         title: "3 Odyssey: Beyond the Stars",
         rating: 4.9,
         likes: 45600,
-        type: "manwha"
+        type:"illustrated",
+        subtype: "manwha"  
         },
         {
         id: 4,
@@ -35,7 +39,8 @@ function Illustrated(){
         title: "4 Night Live",
         rating: 4.2,
         likes: 2340,
-        type: "manwha"
+        type:"illustrated",
+        subtype: "manwha"  
         },
         {
         id: 5,
@@ -43,7 +48,8 @@ function Illustrated(){
         title: "5 Amazing Adventure",
         rating: 4.5,
         likes: 15420,
-        type:"anime"
+        type:"illustrated",
+        subtype: "manwha"  
         },
         {
         id: 6,
@@ -51,7 +57,8 @@ function Illustrated(){
         title: "6 of the Lost Kingdom",
         rating: 3.8,
         likes: 8950,
-        type:"manwha"
+        type:"illustrated",
+        subtype: "manwha"  
         },
         {
         id: 7,
@@ -59,6 +66,8 @@ function Illustrated(){
         title: "7 Odyssey: Beyond the Stars",
         rating: 4.9,
         likes: 45600,
+        type:"illustrated",
+        subtype: "manwha"
         },
         {
         id: 8,
@@ -66,7 +75,8 @@ function Illustrated(){
         title: "8 Night Live",
         rating: 4.2,
         likes: 340,
-        type:"manga"
+        type:"illustrated",
+        subtype: "manwha"      
         },
         {
         id: 9,
@@ -74,7 +84,8 @@ function Illustrated(){
         title: "The 9 Adventure",
         rating: 4.5,
         likes: 15420,
-        type:"anime"
+        ttype:"illustrated",
+        subtype: "manwha"
         },
         {
         id: 10,
@@ -82,7 +93,8 @@ function Illustrated(){
         title: "Mystery 10 the Lost Kingdom",
         rating: 3.8,
         likes: 8950,
-        type:"manwha"
+        type:"illustrated",
+        subtype: "manwha"
         },
         {
         id: 11,
@@ -90,6 +102,8 @@ function Illustrated(){
         title: "11",
         rating: 4.9,
         likes: 45600,
+        type:"illustrated",
+        subtype: "manwha"
         },
         {
         id: 12,
@@ -97,7 +111,8 @@ function Illustrated(){
         title: "12 Night Live",
         rating: 4.2,
         likes: 340,
-        type:"manga"
+        type:"illustrated",
+        subtype: "manwha"
         },
         // {id: 13,
         // imageUrl: "https://picsum.photos/300/400?random=5",
@@ -137,8 +152,13 @@ function Illustrated(){
                 minHeight: '100vh',
             }}
         >
-            <h1 className="headline-2e w-full font-medium pt-10 mb-10 mx-auto text-center">The Illustrated</h1>
+            <h1 className="headline-2e w-full font-medium pt-10 mb-4 mx-auto text-center">The Illustrated</h1>
+            <p className="font-extralight text-[20px] text-center mb-10"> Your collection of Manwha and Manga </p>
             <PosterCarousel posters={posters}/>
+            <div className="mt-15 mx-20">
+                <Collections/>
+            </div>
+
         </div>
     )
 }

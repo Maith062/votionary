@@ -21,16 +21,13 @@ export const metadata = {
 
 export default function HomeLayout({ children }) {
   return (
-    <html
-      className="scrollbar-thin scrollbar-track-white-800 scrollbar-thumb-zinc-500"
-      lang="en"
-    >
-      <body
+    
+      <div
         className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200`}
       >
         <Header lightMode={true}/> {/*Will be a changed to be darker*/}
         {children}
-      </body>
-    </html>
+      </div>
+    
   );
 }
