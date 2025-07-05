@@ -2,6 +2,7 @@
 
 import PosterCarousel from "@/components/PosterCarousel";
 import Collections from "@/sections/Collection";
+import ManualCarousel from "@/components/ManualCarousel";
 
 function Illustrated(){
 
@@ -158,6 +159,7 @@ function Illustrated(){
             <div className="mt-15 mx-20">
                 <Collections/>
             </div>
+            <ManualCarousel slides={posters}/>
 
         </div>
     )
