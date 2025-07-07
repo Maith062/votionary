@@ -4,7 +4,6 @@ import ContentBox from './ContentBox';
 export default function ManualCarousel({slides}){
 
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [forceRender, setForceRender] = useState(0);
     const [posterPerRow, setPosterPerRow] = useState(4);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -22,7 +21,6 @@ export default function ManualCarousel({slides}){
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 767px)");
 
-        setIsMobile(mediaQuery.matches);
         setPosterPerRow(mediaQuery.matches ? 2: 4)
 
         function handleQueryEvent(event) {
@@ -36,17 +34,12 @@ export default function ManualCarousel({slides}){
         };
     }, []);
 
-    // Force re-render when currentSlide changes + pre-render all sections
+    //makes sure that when we change sizes, it returns to first slide
     useEffect(() => {
-        setForceRender(prev => prev + 1);
-        
-        // Pre-load all sections to ensure they're rendered
-        const timer = setTimeout(() => {
-            setForceRender(prev => prev + 1);
-        }, 100);
-        
-        return () => clearTimeout(timer);
-    }, [currentSlide]);
+        if (currentSlide >= sectionChunks.length) {
+            setCurrentSlide(0);
+        }
+    }, [sectionChunks.length, currentSlide]);
 
     // Debug logging
     console.log('Current slide:', currentSlide);
@@ -82,21 +75,21 @@ export default function ManualCarousel({slides}){
                     )}
 
                     {/* Carousel container */}
-                    <div className="flex justify-center h-full overflow-hidden" key={`carousel-${forceRender}`}>
+                    <div className="flex justify-center h-full overflow-hidden">
                         <div 
-                            className="flex transition-transform duration-800 ease-in-out"
+                            className="flex transition-transform duration-500 ease-in-out"
                             style={{ 
                                 transform: `translateX(-${currentSlide * 100}%)`,
                             }}
                         >
                             {sectionChunks.map((chunk, sectionIndex) => (
                                 <div 
-                                    key={`section-${sectionIndex}-${forceRender}`}
-                                    className="flex flex-row gap-3 justify-center items-center min-w-full"
+                                    key={`section-${sectionIndex}`}
+                                    className="flex flex-row gap-3 justify-center items-center min-w-full flex-shrink-0"
                                 >
                                     {chunk.map((poster, posterIndex) => (
                                         <ContentBox 
-                                            key={`${sectionIndex}-${posterIndex}`}
+                                            key={`${posterIndex}`}
                                             id={poster.id}
                                             imageUrl={poster.imageUrl}
                                             title={poster.title}

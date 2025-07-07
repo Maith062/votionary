@@ -36,19 +36,21 @@ export default function Carousel({slides}){
                 <div className="relative w-full h-80 lg:h-[450px] bg-gray-200 rounded-sm overflow-hidden soft-edges">
                     {/* Slides Container */}
                     <div 
+                    
                         className="flex h-full transition-transform duration-500 ease-in-out"
                         style={{ 
                             transform: `translateX(-${currentSlide * 100}%)`,
-                            width: `${slides.length * 100}%`
+                            // width: `${slides.length * 100}%` //the width of the container was 300%
                         }}
                     >
                         {slides.map((slide, index) => (
                             <div 
                                 key={slide.id}
                                 className="w-full h-full flex-shrink-0"
-                                style={{ width: `${100 / slides.length}%` }}
+                                // style={{ width: `${100 / slides.length}%` }} //each slide was 33.3% of the container which caused an issue
                             >
                                 <img
+                                    key={index}
                                     src={slide.image}
                                     alt={slide.alt}
                                     className="w-full h-full object-cover"

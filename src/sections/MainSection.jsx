@@ -431,7 +431,7 @@
                                 className="hover:shadow-2xl"
                                 type={review.type}
                                 width="w-20"
-                                height="h-25"
+                                height="h-30"
                                 isReview={true}
                             />
                             {/*Tooltip */}

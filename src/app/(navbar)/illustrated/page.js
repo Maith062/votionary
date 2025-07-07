@@ -3,7 +3,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
 import PosterCarousel from "@/components/PosterCarousel";
-import Collections from "@/sections/Collection";
+import FilterComponent from "@/sections/FilterComponent";
 import ManualCarousel from "@/components/ManualCarousel";
 
 function Illustrated(){
@@ -148,6 +148,23 @@ function Illustrated(){
         // type:"manga"
         // }
     ];
+
+    const filterOptions = {
+        Year: ['2020s', '2010s', '2000s', '1990s', '1980s'],
+        Rating: ['5 stars', '4+ stars', '3+ stars', '2+ stars', '1+ stars'],
+        Popular: ['This week', 'This month', 'This year', 'All time'],
+        Genre: ['5 stars', '4+ Stars', '3+ Stars', '2+ Stars', '1+ Stars'],
+        Type: ['manwha', 'manga']
+    };
+
+    const intialFilters = {
+        year: '',
+        rating: '',
+        popular: '',
+        genre: '',
+        type: '',
+    }
+
     return(
         <div 
             className="bg-neutral-950 text-zinc-200 w-full h-full"
@@ -158,11 +175,30 @@ function Illustrated(){
             <h1 className="headline-2e w-full font-medium pt-10 mb-4 mx-auto text-center">The Illustrated</h1>
             <p className="font-extralight text-[20px] text-center mb-10"> Your collection of Manwha and Manga </p>
             <PosterCarousel posters={posters}/>
-            <div className="mt-15 mx-20">
-                <Collections/>
+            <div className="mt-10 mb-10 mx-30">
+                <FilterComponent 
+                    filterOptions={filterOptions}
+                    intialFilters={intialFilters}
+                    searchSuggestions={[
+                        'The Great Adventure',
+                        'Comedy Gold',
+                        'Action Movies',
+                        'Best Documentaries',
+                        'Top Rated Series',
+                        'Recent Movies',
+                        'Popular Shows',
+                        'Award Winners',
+                        'Netflix Originals',
+                        'Marvel Movies',
+                        'Disney Films',
+                        'Horror Classics',
+                        'Romantic Comedies',
+                        // ... add more suggestions based on your data
+                    ]}
+                />
             </div>
             <div className="ml-30">
-                <h1 className="text-white font-extralight pb-1">Recently reviewed</h1>
+                <h1 className="text-white font-extralight pb-1">Popular this week</h1>
                 <div className="flex items-center mr-30">
                     <hr className="flex-grow border-t border-gray-300"/>
                 </div>
