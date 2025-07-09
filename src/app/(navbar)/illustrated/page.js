@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import PosterCarousel from "@/components/PosterCarousel";
 import FilterComponent from "@/sections/FilterComponent";
 import ManualCarousel from "@/components/ManualCarousel";
+import MainSection from "@/sections/MainSection";
 
 function Illustrated(){
 
@@ -204,6 +205,9 @@ function Illustrated(){
                 </div>
             </div>
             <ManualCarousel slides={posters}/>
+            {/* <div className="bg-zinc-800 px-20 mx-30">
+                <MainSection/>
+            </div> */}
 
         </div>
     )

@@ -51,35 +51,36 @@ const ResultsPage = () => {
     setSearchTerm(extractedSearch);
   }, [searchParams]); // For Pages Router, use [router.query] instead
 
-  const removeFilter = (filterKey) => {
-    const newFilters = { ...filters };
-    delete newFilters[filterKey];
-    setFilters(newFilters);
+  // const removeFilter = (filterKey) => {
+  //   const newFilters = { ...filters };
+  //   delete newFilters[filterKey];
+  //   setFilters(newFilters);
     
-    // Update URL
-    const params = new URLSearchParams();
-    Object.entries(newFilters).forEach(([key, value]) => {
-      params.append(key, value);
-    });
-    if (searchTerm) {
-      params.append('search', searchTerm);
-    }
+  //   // Update URL
+  //   const params = new URLSearchParams();
+  //   Object.entries(newFilters).forEach(([key, value]) => {
+  //     params.append(key, value);
+  //   });
+  //   if (searchTerm) {
+  //     params.append('search', searchTerm);
+  //   }
     
-    router.push(`/illustrated/results?${params.toString()}`);
-  };
+  //   router.push(`/illustrated/results?${params.toString()}`);
+  // };
 
-  const removeSearch = () => {
-    setSearchTerm('');
+  // const removeSearch = () => {
+  //   setSearchTerm('');
     
-    // Update URL
-    const params = new URLSearchParams();
-    Object.entries(filters).forEach(([key, value]) => {
-      params.append(key, value);
-    });
+  //   // Update URL
+  //   const params = new URLSearchParams();
+  //   Object.entries(filters).forEach(([key, value]) => {
+  //     params.append(key, value);
+  //   });
     
-    router.push(`/illustrated/results?${params.toString()}`);
-  };
+  //   router.push(`/illustrated/results?${params.toString()}`);
+  // };
 
+  //core logic taking the sampleItems (to be replaced eventually with data pulled by an API)
   const getFilteredItems = () => {
     return sampleItems.filter(item => {
       const matchesType = !filters.type || item.type === filters.type;
@@ -101,14 +102,14 @@ const ResultsPage = () => {
   };
 
   const filteredItems = getFilteredItems();
-  const hasActiveFilters = Object.keys(filters).length > 0 || searchTerm;
+  const hasActiveFilters = Object.values(filters).some(filter => filter && filter !== '') || (searchTerm && searchTerm.trim() !== '');
 
    const filterOptions = {
         Year: ['2020s', '2010s', '2000s', '1990s', '1980s'],
         Rating: ['5 stars', '4+ stars', '3+ stars', '2+ stars', '1+ stars'],
         Popular: ['This week', 'This month', 'This year', 'All time'],
         Genre: ['5 stars', '4+ Stars', '3+ Stars', '2+ Stars', '1+ Stars'],
-        Type: ['manwha', 'manga']
+        Type: ['Manwha', 'Manga']
     };
 
     const intialFilters = {
@@ -117,15 +118,33 @@ const ResultsPage = () => {
         popular: '',
         genre: '',
         type: '',
-    }
+    };
+
+    const searchSuggestions=[
+      'The Great Adventure',
+      'Comedy Gold',
+      'Action Movies',
+      'Best Documentaries',
+      'Top Rated Series',
+      'Recent Movies',
+      'Popular Shows',
+      'Award Winners',
+      'Netflix Originals',
+      'Marvel Movies',
+      'Disney Films',
+      'Horror Classics',
+      'Romantic Comedies',
+
+    ];
 
   return (
     <div className='bg-zinc-800'>
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="max-w-6xl mx-30 p-6">
             <div className="mb-6">
                 <FilterComponent 
                     filterOptions={filterOptions}
                     intialFilters={intialFilters} 
+                    searchSuggestions={searchSuggestions}
                 />
                 <Link 
                     href="/illustrated" 
@@ -140,7 +159,7 @@ const ResultsPage = () => {
                 </h1>
                 
                 {/* Active filters display */}
-                {hasActiveFilters && (
+                {/* {hasActiveFilters && (
                 <div className="flex flex-wrap gap-2 mb-6">
                     {Object.entries(filters).map(([key, value]) => (
                     <span key={key} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center gap-1">
@@ -165,7 +184,7 @@ const ResultsPage = () => {
                     </span>
                     )}
                 </div>
-                )}
+                )} */}
             </div>
 
             {/* Results grid */}
