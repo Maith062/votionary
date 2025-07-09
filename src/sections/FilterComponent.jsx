@@ -53,9 +53,15 @@ export default function FilterComponent ({
     const extractedSearch = searchParams.get('search') || '';
 
     //for each possible key, looping through the params and determining the value
-    Object.entries(filters).forEach(([key, value]) => {
-      
+    Object.entries(filters).forEach(([key]) => {
+      const value = searchParams.get(key)
+      if (value){
+        extractedFilters[key] = value
+      }
     })
+
+    setFilters(extractedFilters)
+    setSearchTerm(extractedSearch)
     
   }, [searchParams])
 
@@ -141,6 +147,8 @@ export default function FilterComponent ({
     setFilterSearchTerms({});
     setOpenDropdown(null);
     setShowSearchSuggestions(false);
+    
+    router.push(`/illustrated/results`);
   };
 
   //moved from page.js to make the results removeable
@@ -190,6 +198,9 @@ export default function FilterComponent ({
                         </option>
                       ))}
                     </select>
+                    {hasActiveFilters && 
+                      <h1 className="text-blue-300 font-extralight text-[10px]">{filterType}</h1>
+                    }
                   </div>
                 ))}
               </div>

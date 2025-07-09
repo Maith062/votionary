@@ -18,12 +18,12 @@ const ResultsPage = () => {
 
   // Sample collection data (in real app, this would come from API/database)
   const sampleItems = [
-    { id: 1, name: 'Attack on Titan', category: 'Manga', genre: 'Action', year: '2010s', rating: 5, type: 'manga' },
-    { id: 2, name: 'Solo Leveling', category: 'Manhwa', genre: 'Action', year: '2010s', rating: 5, type: 'manhwa' },
-    { id: 3, name: 'Demon Slayer', category: 'Manga', genre: 'Action', year: '2010s', rating: 4, type: 'manga' },
-    { id: 4, name: 'Tower of God', category: 'Manhwa', genre: 'Action', year: '2010s', rating: 4.6, type: 'manhwa' },
-    { id: 5, name: 'One Piece', category: 'Manga', genre: 'Adventure', year: '1990s', rating: 5, type: 'manga' },
-    { id: 6, name: 'Naruto', category: 'Manga', genre: 'Action', year: '1990s', rating: 4, type: 'manga' },
+    { id: 1, name: 'Attack on Titan', category: 'Manga', genre: 'Action', year: '2010s', rating: 5, type: 'Manga' },
+    { id: 2, name: 'Solo Leveling', category: 'Manhwa', genre: 'Action', year: '2010s', rating: 5, type: 'Manhwa' },
+    { id: 3, name: 'Demon Slayer', category: 'Manga', genre: 'Action', year: '2010s', rating: 4, type: 'Manga' },
+    { id: 4, name: 'Tower of God', category: 'Manhwa', genre: 'Action', year: '2010s', rating: 4.6, type: 'Manhwa' },
+    { id: 5, name: 'One Piece', category: 'Manga', genre: 'Adventure', year: '1990s', rating: 5, type: 'Manga' },
+    { id: 6, name: 'Naruto', category: 'Manga', genre: 'Action', year: '1990s', rating: 4, type: 'Manga' },
   ];
 
   useEffect(() => {
@@ -108,8 +108,8 @@ const ResultsPage = () => {
         Year: ['2020s', '2010s', '2000s', '1990s', '1980s'],
         Rating: ['5 stars', '4+ stars', '3+ stars', '2+ stars', '1+ stars'],
         Popular: ['This week', 'This month', 'This year', 'All time'],
-        Genre: ['5 stars', '4+ Stars', '3+ Stars', '2+ Stars', '1+ Stars'],
-        Type: ['Manwha', 'Manga']
+        Genre: ['Adventure', 'Action', 'Apocalypse', 'Sports', 'Shounen', 'Others'],
+        Type: ['Manhwa', 'Manga']
     };
 
     const intialFilters = {

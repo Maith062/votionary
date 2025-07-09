@@ -154,8 +154,8 @@ function Illustrated(){
         Year: ['2020s', '2010s', '2000s', '1990s', '1980s'],
         Rating: ['5 stars', '4+ stars', '3+ stars', '2+ stars', '1+ stars'],
         Popular: ['This week', 'This month', 'This year', 'All time'],
-        Genre: ['5 stars', '4+ Stars', '3+ Stars', '2+ Stars', '1+ Stars'],
-        Type: ['manwha', 'manga']
+        Genre: ['Adventure', 'Action', 'Apocalypse', 'Sports', 'Shounen', 'Others'],
+        Type: ['Manhwa', 'Manga']
     };
 
     const intialFilters = {
