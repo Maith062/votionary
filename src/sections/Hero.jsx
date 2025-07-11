@@ -1,5 +1,5 @@
 "use client";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/(carousel)/Carousel";
 import InfoCard from "../components/InfoCard";
 
 export default function Hero() {

@@ -264,7 +264,7 @@ export async function GET(request, { params }) {
         },
         {
         id: 8,
-        imageUrl: "https://picsum.photos/64/64?random=108",
+        imageUrl: "https://picsum.photos/300/400?random=108",
         title: "8 Night Live",
         rating: 4.2,
         likes: 340,
@@ -272,7 +272,7 @@ export async function GET(request, { params }) {
         subtype: "manwha",
         tags: ["Supernatural", "Action", "Gothic"],
         text: "Dark forces gather as the night world's greatest champions face their most dangerous enemy yet. This intense installment combines gothic atmosphere with explosive action sequences that will leave you breathless.",
-        heroImage: "https://images.unsplash.com/photo-1520637836862-4d197d17c688?w=1200&h=400&fit=crop",
+        heroImage: "https://picsum.photos/300/400?random=108",
         views: "890K",
         lists: "15.2K",
         ratings: [

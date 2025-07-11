@@ -58,6 +58,15 @@ const MoviePage = ({ params }) => {
     return <div className="flex">{stars}</div>;
   };
 
+  const movieViews = ({views}) => {
+    if (views >= 1000000){
+      return <h1>{`${(views/1000000).toFixed(1)}M`}</h1>
+    } else if (views >= 1000){
+      return <h1>{`${(views/1000).toFixed(1)}K`}</h1>
+    }
+    return <h1>{views}</h1>
+  }
+
   return (
     <div className="min-h-screen bg-zinc-950 px-20">
       {/* Hero Image */}
@@ -71,56 +80,56 @@ const MoviePage = ({ params }) => {
       </div>
 
       {/* Content Container */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="flex gap-4 relative">
+      <div className="max-w-7xl mx-auto px-15 py-8">
+        <div className="flex gap-3 relative">
           
           {/* Left Column - Fixed Position */}
           <div className="flex-shrink-0">
             <div className="md:sticky top-8">
               {/* Movie Poster */}
-              <div className="mb-6">
+              <div className="mb-3 border-2 rounded-sm border-zinc-700">
                 <img 
                   src={movie.imageUrl} 
                   alt={movie.title}
-                  className="w-full rounded-lg shadow-lg"
+                  className="w-50 rounded-xs shadow-lg"
                 />
               </div>
               
               {/* Stats */}
-              <div className="bg-zinc-800 rounded-xs p-6  mb-6">
+              <div className="bg-zinc-800 rounded-xs p-6  mb-3">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Eye className="w-5 h-5 text-gray-600" />
-                      <span className="text-sm text-gray-600">Views</span>
+                      <Eye className="w-5 h-5 text-white" />
+                      <span className="text-sm text-white">Views</span>
                     </div>
-                    <span className="font-semibold">{movie.views}</span>
+                    <span className="font-semibold text-gray-400">{movieViews(movie)}</span>
                   </div>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Heart className="w-5 h-5 text-red-500" />
-                      <span className="text-sm text-gray-600">Likes</span>
+                      <span className="text-sm text-white">Likes</span>
                     </div>
-                    <span className="font-semibold">{movie.likes}</span>
+                    <span className="font-semibold text-gray-400">{movie.likes}</span>
                   </div>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <Bookmark className="w-5 h-5 text-blue-500" />
-                      <span className="text-sm text-gray-600">Lists</span>
+                      <span className="text-sm text-white">Lists</span>
                     </div>
-                    <span className="font-semibold">{movie.lists}</span>
+                    <span className="font-semibold text-gray-400">{movie.lists}</span>
                   </div>
                 </div>
               </div>
               
               {/* Additional Image */}
-              <div className="bg-white rounded-lg p-4 shadow-md h-100">
+              <div className="bg-zinc-700 rounded-sm p-4 shadow-md h-100">
                 <img 
                   src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop"
                   alt="Additional content"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-sm"
                 />
               </div>
             </div>
@@ -128,21 +137,21 @@ const MoviePage = ({ params }) => {
 
           {/* Right Content Area */}
           <div className="flex-1 min-w-0">
-            <div className="flex gap-8">
+            <div className="flex gap-3">
               {/* Middle Column */}
               <div className="flex-1">
-                <div className="bg-white rounded-lg p-8 shadow-md">
-                  <h2 className="text-3xl font-bold mb-6 text-gray-900">{movie.title}</h2>
+                <div className="bg-zinc-700 rounded-sm p-8 shadow-md">
+                  <h2 className="text-3xl font-bold mb-6 text-gray-300">{movie.title}</h2>
                   
                   {/* Movie Blurb */}
                   <div className="mb-8">
-                    <h3 className="text-xl font-semibold mb-4 text-gray-900">Overview</h3>
-                    <p className="text-gray-700 leading-relaxed">{movie.blurb}</p>
+                    <h3 className="text-xl font-semibold mb-4 text-gray-300">Overview</h3>
+                    <p className="text-white leading-relaxed font-extralight">{movie.text}</p>
                   </div>
                   
                   {/* Tags */}
                   <div className="mb-8">
-                    <h3 className="text-xl font-semibold mb-4 text-gray-900">Genres</h3>
+                    <h3 className="text-xl font-semibold mb-4 text-gray-300">Genres</h3>
                     <div className="flex flex-wrap gap-2">
                       {movie.tags.map((tag, index) => (
                         <span 
@@ -159,14 +168,14 @@ const MoviePage = ({ params }) => {
 
               {/* Right Column - Ratings */}
               <div className="w-80 flex-shrink-0">
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h3 className="text-xl font-semibold mb-6 text-gray-900">Ratings</h3>
+                <div className="bg-zinc-700 rounded-sm p-6 shadow-md">
+                  <h3 className="text-xl font-semibold mb-6 text-gray-300">Ratings</h3>
                   
                   <div className="space-y-6">
                     {movie.ratings.map((rating, index) => (
                       <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="font-medium text-gray-900">{rating.source}</span>
+                          <span className="font-medium text-gray-50">{rating.source}</span>
                           <span className="text-lg font-bold text-blue-600">
                             {rating.rating}/{rating.maxRating}
                           </span>
@@ -185,9 +194,9 @@ const MoviePage = ({ params }) => {
             </div>
 
             {/* Reviews Section */}
-            <div className="mt-16">
-              <div className="bg-white rounded-lg p-8 shadow-md">
-                <h3 className="text-2xl font-bold mb-8 text-gray-900">Reviews</h3>
+            <div className="mt-3">
+              <div className="bg-zinc-700 rounded-sm p-8 shadow-md">
+                <h3 className="text-2xl font-bold mb-8 text-gray-200">Reviews</h3>
                 
                 <div className="space-y-8">
                   {movie.reviews.map((review) => (
@@ -200,13 +209,13 @@ const MoviePage = ({ params }) => {
                             </span>
                           </div>
                           <div>
-                            <h4 className="font-semibold text-gray-900">{review.author}</h4>
+                            <h4 className="font-semibold text-white">{review.author}</h4>
                             <p className="text-sm text-gray-500">{review.date}</p>
                           </div>
                         </div>
                         <StarRating rating={review.rating} />
                       </div>
-                      <p className="text-gray-700 leading-relaxed">{review.content}</p>
+                      <p className="text-white leading-relaxed">{review.content}</p>
                     </div>
                   ))}
                 </div>
