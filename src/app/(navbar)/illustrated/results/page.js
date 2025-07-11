@@ -7,6 +7,7 @@ import { X, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
 import FilterComponent from '@/sections/FilterComponent';
+import ContentBox from '@/components/ContentBox';
 
 const ResultsPage = () => {
   const router = useRouter();
@@ -18,13 +19,20 @@ const ResultsPage = () => {
 
   // Sample collection data (in real app, this would come from API/database)
   const sampleItems = [
-    { id: 1, name: 'Attack on Titan', category: 'Manga', genre: 'Action', year: '2010s', rating: 5, type: 'Manga' },
-    { id: 2, name: 'Solo Leveling', category: 'Manhwa', genre: 'Action', year: '2010s', rating: 5, type: 'Manhwa' },
-    { id: 3, name: 'Demon Slayer', category: 'Manga', genre: 'Action', year: '2010s', rating: 4, type: 'Manga' },
-    { id: 4, name: 'Tower of God', category: 'Manhwa', genre: 'Action', year: '2010s', rating: 4.6, type: 'Manhwa' },
-    { id: 5, name: 'One Piece', category: 'Manga', genre: 'Adventure', year: '1990s', rating: 5, type: 'Manga' },
-    { id: 6, name: 'Naruto', category: 'Manga', genre: 'Action', year: '1990s', rating: 4, type: 'Manga' },
-  ];
+    { id: 1, name: 'Attack on Titan', category: 'Manga', genre: 'Action', year: '2010s', rating: 5, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=4' },
+    { id: 2, name: 'Solo Leveling', category: 'Manhwa', genre: 'Fantasy', year: '2020s', rating: 5, type: 'Manhwa', imgUrl: 'https://picsum.photos/300/400?random=1' },
+    { id: 3, name: 'Demon Slayer', category: 'Manga', genre: 'Action', year: '2010s', rating: 4, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=2' },
+    { id: 4, name: 'Tower of God', category: 'Manhwa', genre: 'Adventure', year: '2010s', rating: 4.6, type: 'Manhwa', imgUrl: 'https://picsum.photos/300/400?random=3' },
+    { id: 5, name: 'One Piece', category: 'Manga', genre: 'Adventure', year: '1990s', rating: 5, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=7'},
+    { id: 6, name: 'Naruto', category: 'Manga', genre: 'Action', year: '1990s', rating: 4, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=8'},
+    { id: 7, name: 'Jujutsu Kaisen', category: 'Manga', genre: 'Supernatural', year: '2020s', rating: 4.8, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=9'},
+    { id: 8, name: 'The Beginning After The End', category: 'Manhwa', genre: 'Fantasy', year: '2020s', rating: 4.9, type: 'Manhwa', imgUrl: 'https://picsum.photos/300/400?random=10'},
+    { id: 9, name: 'Chainsaw Man', category: 'Manga', genre: 'Horror', year: '2020s', rating: 4.7, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=11'},
+    { id: 10, name: 'Lore Olympus', category: 'Webtoon', genre: 'Romance', year: '2010s', rating: 4.5, type: 'Manhwa', imgUrl: 'https://picsum.photos/300/400?random=12'},
+    { id: 11, name: 'Dragon Ball', category: 'Manga', genre: 'Action', year: '1980s', rating: 4.2, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=13'},
+    { id: 12, name: 'Vagabond', category: 'Manga', genre: 'Historical', year: '1990s', rating: 5, type: 'Manga', imgUrl: 'https://picsum.photos/300/400?random=14'},
+    { id: 13, name: 'Mushoku Tensei', category: 'Light Novel', genre: 'Isekai', year: '2010s', rating: 4.7, type: 'Lightnovel', imgUrl: 'https://picsum.photos/300/400?random=15'} // Added a 'Light Novel' category example
+];
 
   useEffect(() => {
     // Extract filters from URL parameters
@@ -109,7 +117,7 @@ const ResultsPage = () => {
         Rating: ['5 stars', '4+ stars', '3+ stars', '2+ stars', '1+ stars'],
         Popular: ['This week', 'This month', 'This year', 'All time'],
         Genre: ['Adventure', 'Action', 'Apocalypse', 'Sports', 'Shounen', 'Others'],
-        Type: ['Manhwa', 'Manga']
+        Type: ['Manhwa', 'Manga', 'Lightnovel']
     };
 
     const intialFilters = {
@@ -139,7 +147,7 @@ const ResultsPage = () => {
 
   return (
     <div className='bg-zinc-800'>
-        <div className="max-w-6xl mx-30 p-6">
+        <div className="max-w-6xl mx-25 p-6">
             <div className="mb-6">
                 <FilterComponent 
                     filterOptions={filterOptions}
@@ -189,16 +197,33 @@ const ResultsPage = () => {
 
             {/* Results grid */}
             {filteredItems.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-8 gap-5 lg:gap-2">
                 {filteredItems.map(item => (
-                    <div key={item.id} className="bg-white rounded-lg shadow-md p-4 border hover:shadow-lg transition-shadow">
-                    <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
-                    <p className="text-gray-600 mb-1">Category: {item.category}</p>
-                    <p className="text-gray-600 mb-1">Genre: {item.genre}</p>
-                    <p className="text-gray-600 mb-1">Year: {item.year}</p>
-                    <p className="text-gray-600 mb-1">Type: {item.type}</p>
-                    <p className="text-gray-600">Rating: {item.rating}★</p>
+                    <div key={item.id} className='relative group'>
+                      <ContentBox
+                        key={item.id} 
+                        id={item.id}
+                        title={item.name}
+                        imageUrl={item.imgUrl}
+                        width='w-30'
+                        height= ''
+                        isReview={true}
+                        type="illustrated"
+                    
+                      />
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 text-sm font-medium text-white bg-zinc-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap whitespace-nowrap z-[9999] pointer-events-none">
+                          {item.name}
+                          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-zinc-700"></div>
+                      </div>
                     </div>
+                    // <div key={item.id} className="bg-white rounded-lg shadow-md p-4 border hover:shadow-lg transition-shadow">
+                    // <h3 className="font-semibold text-lg mb-2">{item.name}</h3>
+                    // <p className="text-gray-600 mb-1">Category: {item.category}</p>
+                    // <p className="text-gray-600 mb-1">Genre: {item.genre}</p>
+                    // <p className="text-gray-600 mb-1">Year: {item.year}</p>
+                    // <p className="text-gray-600 mb-1">Type: {item.type}</p>
+                    // <p className="text-gray-600">Rating: {item.rating}★</p>
+                    // </div>
                 ))}
                 </div>
             ) : (

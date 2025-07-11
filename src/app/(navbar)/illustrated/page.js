@@ -155,7 +155,7 @@ function Illustrated(){
         Rating: ['5 stars', '4+ stars', '3+ stars', '2+ stars', '1+ stars'],
         Popular: ['This week', 'This month', 'This year', 'All time'],
         Genre: ['Adventure', 'Action', 'Apocalypse', 'Sports', 'Shounen', 'Others'],
-        Type: ['Manhwa', 'Manga']
+        Type: ['Manhwa', 'Manga', 'Lightnovel']
     };
 
     const intialFilters = {
@@ -163,7 +163,7 @@ function Illustrated(){
         rating: '',
         popular: '',
         genre: '',
-        type: '',
+        category: '',
     }
 
     return(

@@ -206,7 +206,7 @@ export default function FilterComponent ({
               </div>
 
               {/* Search bar  */}
-              <div className="flex gap-4 items-center lg:ml-auto">
+              <div className={hasActiveFilters ? `flex gap-4 items-center lg:ml-auto mb-3` : `flex gap-4 items-center lg:ml-auto`}>
                 {/* Search bar */}
                 
                 <div className="min-w-64 relative flex-1" ref={searchRef}>
