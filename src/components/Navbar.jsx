@@ -4,8 +4,7 @@ import Link from 'next/link'
 
 import LoginModal from './LoginModal';
 
-
-export default function Navbar({navOpen, isMobile, loginState}){
+export default function Navbar({navOpen, isMobile, loginState, isAuthenticated}){
 
     const lastActiveLink = useRef();
     const activeBox = useRef();
@@ -53,55 +52,96 @@ export default function Navbar({navOpen, isMobile, loginState}){
         setActiveTab('');
     }
 
-    const navItems = [
-        {
-            name: "SIGN UP",
-            link: "",
-            popup: true,
-            isSignUp: true,
-            
-        },
-        {
-            name: "LOGIN",
-            link: "",
-            popup: true,
-            isSignUp: false
-        },
-        {
-            name: "ILLUSTRATED",
-            link: "/illustrated",
-            popup: false,
-            isSignUp: false
-        },
-        {
-            name: "ANIMATED",
-            link: "/animated",
-            popup: false,
-            isSignUp: false
-        },
-        {
-            name: "LISTS",
-            link: "/lists",
-            popup: false,
-            isSignUp: false
-        },
-        {
-            name: "COMMUNITY",
-            link: "/community",
-            
-        }
-    ]; 
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
 
-    function temp1(){
-        console.log("Sign Up")
-    }
-    function temp2(){
-        console.log("Login")
-    }
+            if (response.ok) {
+                loginState(false); // Notify parent of logout
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    };
+
+    // Define nav items based on authentication status
+    const getNavItems = () => {
+        if (isAuthenticated) {
+            return [
+                {
+                    name: "LOGOUT",
+                    link: "",
+                    popup: false,
+                    isLogout: true
+                },
+                {
+                    name: "ILLUSTRATED",
+                    link: "/illustrated",
+                    popup: false,
+                },
+                {
+                    name: "ANIMATED",
+                    link: "/animated",
+                    popup: false,
+                },
+                {
+                    name: "LISTS",
+                    link: "/lists",
+                    popup: false,
+                },
+                {
+                    name: "COMMUNITY",
+                    link: "/community",
+                    popup: false,
+                }
+            ];
+        } else {
+            return [
+                {
+                    name: "SIGN UP",
+                    link: "",
+                    popup: true,
+                    isSignUp: true,
+                },
+                {
+                    name: "LOGIN",
+                    link: "",
+                    popup: true,
+                    isSignUp: false
+                },
+                {
+                    name: "ILLUSTRATED",
+                    link: "/illustrated",
+                    popup: false,
+                },
+                {
+                    name: "ANIMATED",
+                    link: "/animated",
+                    popup: false,
+                },
+                {
+                    name: "LISTS",
+                    link: "/lists",
+                    popup: false,
+                },
+                {
+                    name: "COMMUNITY",
+                    link: "/community",
+                    popup: false,
+                }
+            ];
+        }
+    };
+
+    const navItems = getNavItems();
+
     return (
         <>
             <nav className={isMobile ? 'mobile-navbar' : 'desktop-navbar'}>
-                {navItems.map(({name, link, popup, isSignUp, ref}, index) => (
+                {navItems.map(({name, link, popup, isSignUp, isLogout, ref}, index) => (
                     <div
                         key={index}
                         className={isMobile ? 'nav-link-mobile' : 'nav-link'}
@@ -119,17 +159,20 @@ export default function Navbar({navOpen, isMobile, loginState}){
                                   }
                                 )}                            
                             ref={ref}>{name}</h1>                                           
+                        ) : isLogout ? (
+                            <h1 onClick={handleLogout} ref={ref} className="cursor-pointer">
+                                {name}
+                            </h1>
                         ) : (
                             <Link 
                                 href={link}  
-                                ref = {ref}                           
+                                ref={ref}                           
                                 onClick={activeCurrentLink}
                             >
                                 {name}
                             </Link>
                         )}
                     </div>
-                    
                 ))}
                 {/* {isMobile && <div className="active-box" ref={activeBox}></div>} */}
             </nav>
@@ -142,12 +185,13 @@ export default function Navbar({navOpen, isMobile, loginState}){
                     loginState={loginState}
                 />
             )}
-
         </>
     )
 }
 
 Navbar.propTypes = {
     navOpen: PropTypes.bool.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool.isRequired,
+    loginState: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired
 }

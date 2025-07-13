@@ -21,9 +21,41 @@ const roboto = Roboto({
 
 // console.log(browserImage)
 export default function Header({lightMode}) {
-  const [navOpen, setNavOpen] = useState(false);
+ const [navOpen, setNavOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [successLogin, setSuccessLogin] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
+   // Check authentication status from server
+  const checkAuthStatus = async () => {
+    try {
+      const response = await fetch('/api/auth/status', {
+        method: 'GET',
+        credentials: 'include', // Important for cookie-based auth
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        console.log("data in Header", data)
+        setIsAuthenticated(data.isAuthenticated);
+        setUser(data.user || null);
+      } else {
+        setIsAuthenticated(false);
+        setUser(null);
+      }
+    } catch (error) {
+      console.error('Error checking auth status:', error);
+      setIsAuthenticated(false);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
@@ -45,11 +77,22 @@ export default function Header({lightMode}) {
 
   console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`);
 
-  const login = (state) => {setSuccessLogin(state)}
+  const handleLoginStateChange = (loginSuccess) => {
+    console.log('LoginSuccess in Header.jsx', loginSuccess)
+    if (loginSuccess) {
+      // Refresh auth status after successful login
+      checkAuthStatus();
+      console.log('isauthenticeated: ', isAuthenticated)
+    } else {
+      // Handle logout
+      setIsAuthenticated(false);
+      setUser(null);
+    }
+  };
 
-  const user = {
-    image: 'https://picsum.photos/64/64?random=116'
-  }
+  // const user = {
+  //   image: 'https://picsum.photos/64/64?random=116'
+  // }
 
   return (
     <header
@@ -72,7 +115,12 @@ export default function Header({lightMode}) {
 
           {/* Desktop Navigation - Hidden on mobile */}
           <div className="hidden md:flex items-center">
-            <Navbar navOpen={false} isMobile={false} loginState={login} />
+            <Navbar 
+              navOpen={false} 
+              isMobile={false} 
+              loginState={handleLoginStateChange}
+              isAuthenticated={isAuthenticated}
+            />
           </div>
 
           {/* Desktop Search Bar */}
@@ -95,8 +143,8 @@ export default function Header({lightMode}) {
             <input type="text" placeholder="Search..." className={lightMode ? "search-bar-light" : "search-bar-dark"} />
           </div>
 
-          {successLogin && <div className="hidden md:block ml-10">
-            <UserIcon user={user} loginState={login}/>
+          {isAuthenticated && <div className="hidden md:block ml-10">
+            <UserIcon user={user} loginState={handleLoginStateChange}/>
           </div>}
 
           {/* Mobile Menu Button */}
@@ -111,8 +159,8 @@ export default function Header({lightMode}) {
                 <Menu className="h-6 w-6 text-gray-600" />
               )}
             </button>
-            {successLogin  && <div className="md:block ml-10">
-              <UserIcon user={user} loginState={login}/>
+            {isAuthenticated  && <div className="md:block ml-10">
+              <UserIcon user={user} loginState={handleLoginStateChange}/>
             </div>}
           </div>
         </div>
@@ -130,7 +178,12 @@ export default function Header({lightMode}) {
                 navOpen ? "block" : "hidden"
               } w-50 absolute right-2 top-15 z-50`}
             >
-              <Navbar navOpen={navOpen} isMobile={isMobile} loginState={login}/>
+              <Navbar 
+                navOpen={navOpen} 
+                isMobile={isMobile} 
+                loginState={handleLoginStateChange}
+                isAuthenticated={isAuthenticated}
+              />
               {/* Mobile Search Bar */}
               <div className="mt-4 pb-4 ">
                 <div className="relative">
