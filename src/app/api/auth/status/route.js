@@ -15,7 +15,7 @@ export async function GET(request) {
   }
 
   // Get the cookies store
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   // Attempt to retrieve the 'auth_token' cookie
   const token = cookieStore.get('auth-token')?.value;
 

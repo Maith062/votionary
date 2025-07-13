@@ -77,7 +77,7 @@ export default function Header({lightMode}) {
 
   console.log(`Is mobile: ${isMobile} Is open: ${navOpen}`);
 
-  const handleLoginStateChange = (loginSuccess) => {
+  const handleLoginStateChange = async (loginSuccess) => {
     console.log('LoginSuccess in Header.jsx', loginSuccess)
     if (loginSuccess) {
       // Refresh auth status after successful login
@@ -85,8 +85,21 @@ export default function Header({lightMode}) {
       console.log('isauthenticeated: ', isAuthenticated)
     } else {
       // Handle logout
-      setIsAuthenticated(false);
-      setUser(null);
+      
+
+      try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'POST',
+                credentials: 'include',
+            });
+
+            if (response.ok) {
+                setIsAuthenticated(false);
+                setUser(null);
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
     }
   };
 
