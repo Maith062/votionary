@@ -23,19 +23,22 @@ export async function GET(request) {
   let user = null;
 
   // If a token exists in the cookie, attempt to verify it
+   
   if (token) {
-    console.log("The token exists")
+    
     try {
       // Verify the token using the secret.
       // If valid, 'decoded' will contain the original payload.
       const decoded = jwt.verify(token, jwtSecret);
+      console.log('Decoded in /auth/status ', decoded)
 
       isAuthenticated = true;
       // Extract user data from the decoded token payload
       user = {
-        id: decoded.id || 'unknown_id',
-        name: decoded.name || 'Guest User',
-        email: decoded.email || 'guest@example.com',
+        id: decoded.userId || 'unknown_id',
+        name: decoded.userName || 'Guest User',
+        email: decoded.userEmail || 'guest@example.com',
+        icon: decoded.userIcon || 'https://picsum.photos/64/64?random=16'
       };
 
     } catch (error) {

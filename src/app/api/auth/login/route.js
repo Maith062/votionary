@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
-import { validateUser } from '@/lib/auth'
+import { validateUserLogin } from '@/lib/auth'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key'
 
@@ -9,16 +9,16 @@ export async function POST(request) {
   try {
     const { email, password } = await request.json()
     
-    const user = await validateUser(email, password)
+    const user = await validateUserLogin(email, password)
     
     if (user) {
       const token = jwt.sign(
-        { userId: user.id }, 
+        { userId: user.id, userEmail: user.email, userName: user.name, userIcon: user.imageUrl }, 
         JWT_SECRET, 
         { expiresIn: '7d' }
       )
-      
-      cookies().set('auth-token', token, {
+        const cookieStore = await cookies()
+        cookieStore.set('auth-token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'strict',
@@ -28,7 +28,7 @@ export async function POST(request) {
       
       return NextResponse.json({ 
         success: true, 
-        user: { id: user.id, email: user.email, name: user.name } 
+        user: { id: user.id, email: user.email, name: user.name, imageUrl: user.imageUrl} 
       })
     }
     

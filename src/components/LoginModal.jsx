@@ -126,12 +126,7 @@ export default function LoginModal({loginOrModal, modalOpen="false", onClose, lo
       //Calling the parent's close handler
       onClose();
     };
-
-    //temporary account for login: 
-    const tempAccount = {
-        userEmail: "admin@admin",
-        password: "admin1"
-    }
+ 
 
     return(
       <>

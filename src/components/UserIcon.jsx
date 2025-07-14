@@ -14,7 +14,7 @@ export default function UserIcon({user, loginState}){
                 // onMouseLeave={() => isClicked(false)}
             >
                 <img 
-                    src={user.image}
+                    src={user.icon}
                     alt={user.name || 'User avatar'}
                     className="w-10 h-10 rounded-full border-2 border-blue-500 shadow-md transition-all duration-200 hover:border-blue-600 hover:shadow-lg"
                 />
@@ -36,7 +36,7 @@ export default function UserIcon({user, loginState}){
                     <div className="px-4 py-3 border-b border-gray-100">
                         <div className="flex items-center space-x-3">
                             <img 
-                                src={user.image}
+                                src={user.icon}
                                 alt={user.name || 'User avatar'}
                                 className="w-10 h-10 rounded-full"
                             />
